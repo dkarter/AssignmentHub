@@ -19,7 +19,7 @@ ActiveRecord::Schema.define(:version => 20120223014311) do
     t.string   "start_date"
     t.string   "due_date"
     t.integer  "priority"
-    t.string   "notes"
+    t.text     "notes"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
