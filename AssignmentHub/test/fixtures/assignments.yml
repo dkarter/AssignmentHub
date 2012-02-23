@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  name: MyString
+  type: 
+  start_date: MyString
+  due_date: MyString
+  priority: 
+  notes: MyString
+
+two:
+  name: MyString
+  type: 
+  start_date: MyString
+  due_date: MyString
+  priority: 
+  notes: MyString

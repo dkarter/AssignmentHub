@@ -1,4 +1,14 @@
 AssignmentHub::Application.routes.draw do
+  resources :teachers
+
+  resources :attachments
+
+  resources :assignments
+
+  resources :courses
+
+  resources :users
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
