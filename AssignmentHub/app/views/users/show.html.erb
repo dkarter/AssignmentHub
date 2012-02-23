@@ -1,23 +1,13 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <b>Name:</b>
+  <b>Username:</b>
   <%= @user.name %>
 </p>
 
 <p>
-  <b>Password:</b>
-  <%= @user.password %>
-</p>
-
-<p>
-  <b>First:</b>
-  <%= @user.first %>
-</p>
-
-<p>
-  <b>Last:</b>
-  <%= @user.last %>
+  <b>Full Name:</b>
+  <%= @user.first + " " + @user.last %>
 </p>
 
 <p>
@@ -31,7 +21,7 @@
 </p>
 
 <p>
-  <b>User type:</b>
+  <b>User Type:</b>
   <%= @user.user_type %>
 </p>
 
