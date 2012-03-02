@@ -32,6 +32,18 @@ class UsersController < ApplicationController
     end
   end
 
+  def login
+    if request.post? and params[:user]
+      @user = User.new(params[:user])
+      user = User.find_by_username(@user.name)
+      if user and user.password_matches?(@user.password)
+        flash[:notice] = "Logged in!"
+      else
+        flash[:warning] = "Couldn't log in!"
+      end
+    end
+  end
+
   # GET /users/1/edit
   def edit
     @user = User.find(params[:id])
