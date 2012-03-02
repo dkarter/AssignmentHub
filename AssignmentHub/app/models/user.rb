@@ -29,9 +29,9 @@ class User < ActiveRecord::Base
     self.password = User.encrypt(self.password, self.pass_salt)
   end
 
-  def send_password
+  def forgot_password
     new_pass = User.random_string(10)
-    self.password = self.password_confirmation = new_pass
+    self.password = User.encrypt(new_pass, user.pass_salt)
     self.save
     Notifications.mail_password(self.email, self.name, new_pass)
   end

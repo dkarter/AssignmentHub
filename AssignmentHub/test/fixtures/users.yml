@@ -2,6 +2,9 @@
 
 one:
   name: Symphony
+  first: Symphony
+  last: Nocturn
   pass_salt: X2274
   email: symphony@atlas.gov
   password: afe0d223cdgafe52126a9ef9fae12e45e2788d39
+  user_type: 0
