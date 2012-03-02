@@ -44,6 +44,14 @@ class UsersController < ApplicationController
     end
   end
 
+  def forgot_password
+    if request.post? and params[:user]
+      @user = User.new(params[:user])
+      user = User.find_by_email(@user.email)
+      flash[:notice] = "Received email!"
+    end
+  end
+
   # GET /users/1/edit
   def edit
     @user = User.find(params[:id])
