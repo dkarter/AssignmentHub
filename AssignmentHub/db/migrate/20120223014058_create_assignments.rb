@@ -5,8 +5,8 @@ class CreateAssignments < ActiveRecord::Migration
       t.string :type
       t.string :start_date
       t.string :due_date
-      t.tinyint :priority
-      t.string :notes
+      t.integer :priority
+      t.text :notes
 
       t.timestamps
     end
