@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!--
 <html>
 <head>
   <title>AssignmentHub</title>
@@ -12,7 +12,7 @@
 
 </body>
 </html>
-
+-->
 
 <!-- Skin -->
 
@@ -20,19 +20,20 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-<title>Internet Dreams</title>
-<link rel="stylesheet" href="css/screen.css" type="text/css" media="screen" title="default" />
+<title>AssignmentHub</title>
+<%= stylesheet_link_tag    "screen", :media => "all" %>
 <!--[if IE]>
-<link rel="stylesheet" media="all" type="text/css" href="css/pro_dropline_ie.css" />
+<%= stylesheet_link_tag    "pro_dropline_ie", :media => "all" %>
 <![endif]-->
 
 <!--  jquery core -->
-<script src="js/jquery/jquery-1.4.1.min.js" type="text/javascript"></script>
+<%= javascript_include_tag "jquery/jquery-1.4.1.min" %>
 
 <!--  checkbox styling script -->
-<script src="js/jquery/ui.core.js" type="text/javascript"></script>
-<script src="js/jquery/ui.checkbox.js" type="text/javascript"></script>
-<script src="js/jquery/jquery.bind.js" type="text/javascript"></script>
+<%= javascript_include_tag "jquery/ui.core" %>
+<%= javascript_include_tag "jquery/ui.checkbox" %>
+<%= javascript_include_tag "jquery/jquery.bind" %>
+
 <script type="text/javascript">
 $(function(){
 	$('input').checkBox();
@@ -47,7 +48,7 @@ $(function(){
 <![if !IE 7]>
 
 <!--  styled select box script version 1 -->
-<script src="js/jquery/jquery.selectbox-0.5.js" type="text/javascript"></script>
+<%= javascript_include_tag "jquery/jquery.selectbox-0.5" %>
 <script type="text/javascript">
 $(document).ready(function() {
 	$('.styledselect').selectbox({ inputClass: "selectbox_styled" });
@@ -58,7 +59,7 @@ $(document).ready(function() {
 <![endif]>
 
 <!--  styled select box script version 2 --> 
-<script src="js/jquery/jquery.selectbox-0.5_style_2.js" type="text/javascript"></script>
+<%= javascript_include_tag "jquery/jquery.selectbox-0.5_style_2" %>
 <script type="text/javascript">
 $(document).ready(function() {
 	$('.styledselect_form_1').selectbox({ inputClass: "styledselect_form_1" });
@@ -67,7 +68,7 @@ $(document).ready(function() {
 </script>
 
 <!--  styled select box script version 3 --> 
-<script src="js/jquery/jquery.selectbox-0.5_style_2.js" type="text/javascript"></script>
+<%= javascript_include_tag "jquery/jquery.selectbox-0.5_style_2" %>
 <script type="text/javascript">
 $(document).ready(function() {
 	$('.styledselect_pages').selectbox({ inputClass: "styledselect_pages" });
@@ -75,11 +76,11 @@ $(document).ready(function() {
 </script>
 
 <!--  styled file upload script --> 
-<script src="js/jquery/jquery.filestyle.js" type="text/javascript"></script>
+<%= javascript_include_tag "jquery/jquery.filestyle" %>
 <script type="text/javascript" charset="utf-8">
   $(function() {
       $("input.file_1").filestyle({ 
-          image: "images/forms/choose-file.gif",
+          image: "assets/forms/choose-file.gif",
           imageheight : 21,
           imagewidth : 78,
           width : 310
@@ -88,11 +89,10 @@ $(document).ready(function() {
 </script>
 
 <!-- Custom jquery scripts -->
-<script src="js/jquery/custom_jquery.js" type="text/javascript"></script>
- 
+ <%= javascript_include_tag "jquery/custom_jquery" %>
 <!-- Tooltips -->
-<script src="js/jquery/jquery.tooltip.js" type="text/javascript"></script>
-<script src="js/jquery/jquery.dimensions.js" type="text/javascript"></script>
+<%= javascript_include_tag "jquery/jquery.tooltip" %>
+<%= javascript_include_tag "jquery/jquery.dimensions" %>
 <script type="text/javascript">
 $(function() {
 	$('a.info-tooltip ').tooltip({
@@ -109,9 +109,9 @@ $(function() {
 
 
 <!--  date picker script -->
-<link rel="stylesheet" href="css/datePicker.css" type="text/css" />
-<script src="js/jquery/date.js" type="text/javascript"></script>
-<script src="js/jquery/jquery.datePicker.js" type="text/javascript"></script>
+<%= stylesheet_link_tag    "datePicker", :media => "all" %>
+<%= javascript_include_tag "jquery/date" %>
+<%= javascript_include_tag "jquery/jquery.datePicker" %>
 <script type="text/javascript" charset="utf-8">
         $(function()
 {
@@ -181,7 +181,7 @@ $('#d').trigger('change');
 </script>
 
 <!-- MUST BE THE LAST SCRIPT IN <HEAD></HEAD></HEAD> png fix -->
-<script src="js/jquery/jquery.pngFix.pack.js" type="text/javascript"></script>
+<%= javascript_include_tag "jquery/jquery.pngFix.pack" %>
 <script type="text/javascript">
 $(document).ready(function(){
 $(document).pngFix( );
@@ -197,7 +197,7 @@ $(document).pngFix( );
 
 	<!-- start logo -->
 	<div id="logo">
-	<a href=""><img src="images/shared/logo.png" width="156" height="40" alt="" /></a>
+		<h1 style="color:FFFFFF !important;">AssignmentHub</h1>
 	</div>
 	<!-- end logo -->
 	
@@ -216,7 +216,7 @@ $(document).pngFix( );
 		</select> 
 		</td>
 		<td>
-		<input type="image" src="images/shared/top_search_btn.gif"  />
+		<input type="image" src="assets/shared/top_search_btn.gif"  />
 		</td>
 		</tr>
 		</table>
@@ -241,9 +241,9 @@ $(document).pngFix( );
 		<div id="nav-right">
 		
 			<div class="nav-divider">&nbsp;</div>
-			<div class="showhide-account"><img src="images/shared/nav/nav_myaccount.gif" width="93" height="14" alt="" /></div>
+			<div class="showhide-account"><img src="assets/shared/nav/nav_myaccount.gif" width="93" height="14" alt="" /></div>
 			<div class="nav-divider">&nbsp;</div>
-			<a href="" id="logout"><img src="images/shared/nav/nav_logout.gif" width="64" height="14" alt="" /></a>
+			<a href="" id="logout"><img src="assets/shared/nav/nav_logout.gif" width="64" height="14" alt="" /></a>
 			<div class="clear">&nbsp;</div>
 		
 			<!--  start account-content -->	
@@ -375,11 +375,11 @@ $(document).pngFix( );
 
 	<table border="0" width="100%" cellpadding="0" cellspacing="0" id="content-table">
 	<tr>
-		<th rowspan="3" class="sized"><img src="images/shared/side_shadowleft.jpg" width="20" height="300" alt="" /></th>
+		<th rowspan="3" class="sized"><img src="assets/shared/side_shadowleft.jpg" width="20" height="300" alt="" /></th>
 		<th class="topleft"></th>
 		<td id="tbl-border-top">&nbsp;</td>
 		<th class="topright"></th>
-		<th rowspan="3" class="sized"><img src="images/shared/side_shadowright.jpg" width="20" height="300" alt="" /></th>
+		<th rowspan="3" class="sized"><img src="assets/shared/side_shadowright.jpg" width="20" height="300" alt="" /></th>
 	</tr>
 	<tr>
 		<td id="tbl-border-left"></td>
@@ -395,7 +395,7 @@ $(document).pngFix( );
 				<table border="0" width="100%" cellpadding="0" cellspacing="0">
 				<tr>
 					<td class="yellow-left">You have a new message. <a href="">Go to Inbox.</a></td>
-					<td class="yellow-right"><a class="close-yellow"><img src="images/table/icon_close_yellow.gif"   alt="" /></a></td>
+					<td class="yellow-right"><a class="close-yellow"><img src="assets/table/icon_close_yellow.gif"   alt="" /></a></td>
 				</tr>
 				</table>
 				</div>
@@ -406,7 +406,7 @@ $(document).pngFix( );
 				<table border="0" width="100%" cellpadding="0" cellspacing="0">
 				<tr>
 					<td class="red-left">Error. <a href="">Please try again.</a></td>
-					<td class="red-right"><a class="close-red"><img src="images/table/icon_close_red.gif"   alt="" /></a></td>
+					<td class="red-right"><a class="close-red"><img src="assets/table/icon_close_red.gif"   alt="" /></a></td>
 				</tr>
 				</table>
 				</div>
@@ -417,7 +417,7 @@ $(document).pngFix( );
 				<table border="0" width="100%" cellpadding="0" cellspacing="0">
 				<tr>
 					<td class="blue-left">Welcome back. <a href="">View my account.</a> </td>
-					<td class="blue-right"><a class="close-blue"><img src="images/table/icon_close_blue.gif"   alt="" /></a></td>
+					<td class="blue-right"><a class="close-blue"><img src="assets/table/icon_close_blue.gif"   alt="" /></a></td>
 				</tr>
 				</table>
 				</div>
@@ -428,7 +428,7 @@ $(document).pngFix( );
 				<table border="0" width="100%" cellpadding="0" cellspacing="0">
 				<tr>
 					<td class="green-left">Product added sucessfully. <a href="">Add new one.</a></td>
-					<td class="green-right"><a class="close-green"><img src="images/table/icon_close_green.gif"   alt="" /></a></td>
+					<td class="green-right"><a class="close-green"><img src="assets/table/icon_close_green.gif"   alt="" /></a></td>
 				</tr>
 				</table>
 				</div>
