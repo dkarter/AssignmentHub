@@ -1,0 +1,9 @@
+# pack-refs with: peeled 
+4af3fc415456ac00aeaa1c56bf1869234524b50f refs/heads/rails-3.0
+41f1af69607b721bc97e6b22b0df52970fae10e5 refs/heads/nested_forms
+1e2984414293edd3f83a9c197f6a832e68cc0507 refs/heads/master
+c0e1bebf8aa7b72acc6cab9158c2fb939bf4f533 refs/heads/fix-1013
+14cdd3be4ada38f8e6974935f806c8de170abf11 refs/heads/dsl-refactoring
+acfa1e5d2bf3c80a511d3d2ea6dcd60169d5c564 refs/heads/associated-collection-refact
+1cb0628eea5be6120c4bfcbe609b3cea5f246290 refs/heads/activo
+19453d77913e5cc92dd836294bcb6e7ceb4d2a7f refs/heads/actions
