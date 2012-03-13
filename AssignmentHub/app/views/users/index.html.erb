@@ -24,7 +24,7 @@
 				    <th>Email</th>
 				    <th>Phone</th>
 				    <th>User Type</th>
-				    <th></th>
+					<th></th>
 				    <th></th>
 				    <th></th>
 				</tr>
@@ -41,14 +41,14 @@
 				    <td><%= link_to 'Edit', edit_user_path(user), :class => 'ico edit' %></td>
 				    <td><%= link_to 'Destroy', user, confirm: 'Are you sure?', method: :delete, :class => 'ico del' %></td>
 				  </tr>
-				<% end %>
+				<% end if @users %>
 
 			</table>
 
 
 			<!-- Pagging -->
 			<div class="pagging">
-				<div class="left">Showing 1-12 of 44</div>
+				<div class="left">Showing 1-<%= @users.length if @users %> of <%= @users.length if @users %></div>
 				<div class="right">
 					<a href="#">Previous</a>
 					<a href="#">1</a>

@@ -1,7 +1,7 @@
 <!-- Content -->
 <div id="content">
 	<%= form_for(@course) do |f| %>
-		<!--% @course.user = User.find(current_user) %-->
+		<% @course.user = User.find(current_user) %>
 
 	  <% if @course.errors.any? %>
 	    <div id="error_explanation">

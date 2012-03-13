@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120302025522) do
+ActiveRecord::Schema.define(:version => 20120313084840) do
 
   create_table "assignments", :force => true do |t|
     t.string   "name"
@@ -22,6 +22,7 @@ ActiveRecord::Schema.define(:version => 20120302025522) do
     t.text     "notes"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+    t.integer  "course_id"
   end
 
   create_table "attachments", :force => true do |t|
@@ -29,8 +30,10 @@ ActiveRecord::Schema.define(:version => 20120302025522) do
     t.string   "type"
     t.string   "upload_date"
     t.string   "server_path"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
+    t.integer  "course_id"
+    t.integer  "assignment_id"
   end
 
   create_table "courses", :force => true do |t|
@@ -41,6 +44,7 @@ ActiveRecord::Schema.define(:version => 20120302025522) do
     t.string   "code"
     t.datetime "created_at",    :null => false
     t.datetime "updated_at",    :null => false
+    t.integer  "user_id"
   end
 
   create_table "teachers", :force => true do |t|
@@ -51,6 +55,11 @@ ActiveRecord::Schema.define(:version => 20120302025522) do
     t.string   "type"
     t.datetime "created_at",   :null => false
     t.datetime "updated_at",   :null => false
+  end
+
+  create_table "teachers_courses", :id => false, :force => true do |t|
+    t.integer "teacher_id"
+    t.integer "course_id"
   end
 
   create_table "users", :force => true do |t|

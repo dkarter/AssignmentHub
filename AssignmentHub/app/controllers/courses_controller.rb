@@ -2,16 +2,18 @@ class CoursesController < ApplicationController
   # GET /courses
   # GET /courses.json
   def index
-    @courses = Course.all
+    #@courses = Course.all
     
     #this is supposed to show only the courses assigned for the user
-    if false
-      if current_user
-        @courses = Course.where(:user => User.find(current_user))
+    #if false
+      if current_user && User.find(current_user).user_type > 0
+        @courses = Course.where(:user_id => User.find(current_user))
+      elsif current_user && User.find(current_user).user_type == 0
+        @courses = Course.all
       else
         @courses = nil
       end
-    end
+    #end
     
     respond_to do |format|
       format.html # index.html.erb
@@ -50,7 +52,10 @@ class CoursesController < ApplicationController
   # POST /courses.json
   def create
     @course = Course.new(params[:course])
-
+    
+    # set current user as the creator of the course 
+    @course.user = User.find(current_user)
+    
     respond_to do |format|
       if @course.save
         format.html { redirect_to @course, notice: 'Course was successfully created.' }

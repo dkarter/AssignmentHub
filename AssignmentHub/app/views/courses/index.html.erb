@@ -24,6 +24,9 @@
 				    <th>School</th>
 				    <th>Section</th>
 				    <th>Code</th>
+				    <% if is_admin %>
+						<th>User</th>
+					<% end %>
 				    <th></th>
 				    <th></th>
 				    <th></th>
@@ -37,6 +40,9 @@
 				    <td><%= course.school %></td>
 				    <td><%= course.section %></td>
 				    <td><%= course.code %></td>
+					<% if is_admin %>
+						<td><%= course.user.name if course.user %></td>
+					<% end %>
 				    <td><%= link_to 'Show', course %></td>
 				    <td><%= link_to 'Edit', edit_course_path(course) %></td>
 				    <td><%= link_to 'Destroy', course, confirm: 'Are you sure?', method: :delete %></td>
@@ -44,13 +50,13 @@
 				<% end if @courses %>
 			</table>
 			
-			<% if !@courses %>
+			<% if !@courses || @courses.length == 0 %>
 				<div class="ac">No Courses Found... Add one now.</div>
 			<% end %>
 
 			<!-- Pagging -->
 			<div class="pagging">
-				<div class="left">Showing 1-12 of 44</div>
+				<div class="left">Showing 1-<%= @courses.length if @courses %> of <%= @courses.length if @courses %></div>
 				<div class="right">
 					<a href="#">Previous</a>
 					<a href="#">1</a>

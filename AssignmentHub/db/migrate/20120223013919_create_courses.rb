@@ -6,7 +6,8 @@ class CreateCourses < ActiveRecord::Migration
       t.string :school
       t.string :section
       t.string :code
-
+      
+      
       t.timestamps
     end
   end
