@@ -3,43 +3,76 @@
     <div id="error_explanation">
       <h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>
 
-      <ul>
+      
       <% @user.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
+		<!-- Message Error -->
+		<div class="msg msg-error">
+			<p><strong><%= msg %></strong></p>
+			<a href="#" class="close">close</a>
+		</div>
+		<!-- End Message Error -->      
       <% end %>
-      </ul>
+      
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label "Username" %><br />
-    <%= f.text_field :name %>
-  </div>
-  <div class="field">
-    <%= f.label :password %><br />
-    <%= f.text_field :password %>
-  </div>
-  <div class="field">
-    <%= f.label "First name" %><br />
-    <%= f.text_field :first %>
-  </div>
-  <div class="field">
-    <%= f.label "Last name" %><br />
-    <%= f.text_field :last %>
-  </div>
-  <div class="field">
-    <%= f.label "Email address" %><br />
-    <%= f.text_field :email %>
-  </div>
-  <div class="field">
-    <%= f.label "Phone number" %><br />
-    <%= f.text_field :phone %>
-  </div>
-  <div class="field">
-    <%= f.label :user_type %><br />
-    <%= f.text_field :user_type %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+<!-- Box -->
+<div class="box">
+	<!-- Box Head -->
+	<div class="box-head">
+		<h2>Edit User</h2>
+	</div>
+	<!-- End Box Head -->
+	
+		
+		<!-- Form -->
+		<div class="form">
+			<p>
+				<span class="req">(Required, max 50 symbols)</span>
+				<%= f.label "Username" %>
+				<%= f.text_field :name, :class => 'field size1' %>
+			</p>
+
+			<p>
+			  	<span class="req">(Required, max 100 symbols)</span>
+			  	<%= f.label :password %>
+			  	<%= f.text_field :password %>
+			</p>
+			<p>
+			  	<span class="req">(Required, max 20 symbols)</span>
+			  	<%= f.label "First name" %>
+			  	<%= f.text_field :first %>
+			</p>
+			<p>
+			  	<span class="req">(Required, max 20 symbols)</span>
+			  	<%= f.label "Last name" %>
+			  	<%= f.text_field :last %>
+			</p>
+			<p>
+			  	<span class="req">(Required, max 100 symbols)</span>
+			  	<%= f.label "Email address" %>
+			  	<%= f.text_field :email %>
+			</p>
+			<p>
+			  	<%= f.label "Phone number" %>
+			  	<%= f.text_field :phone %>
+			</p>
+			<p>
+				<span class="req">(Required)</span>
+			  	<%= f.label :user_type %>
+			  	<%= f.text_field :user_type %>
+			</p>
+			
+		</div>
+		<!-- End Form -->
+		
+		<!-- Form Buttons -->
+		<div class="buttons">
+			<input type="button" class="button" value="reset" />
+			<%= f.submit 'Submit', :class => 'button' %>
+		</div>
+		<!-- End Form Buttons -->
+</div>
+<!-- End Box -->
+
 <% end %>
