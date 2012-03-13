@@ -8,6 +8,21 @@
 	
 	<!-- JS Files -->
 	<%= javascript_include_tag "application" %>
+	<%= javascript_include_tag "jquery-1.7.1" %>
+	
+	<script language="javascript">
+		$(document).ready(function() {
+			var links = $("#navigation a");
+
+			for (i=0; i<links.length; i++) {
+				if (window.location.href.indexOf($(links[i]).attr("href")) != -1)
+					$(links[i]).addClass("active");
+				else
+					$(links[i]).removeClass("active");
+			}
+		});
+		
+	</script>
 	
 	<!--Meta Tags -->
 	<%= csrf_meta_tags %>
@@ -48,12 +63,11 @@
 		<!-- Main Nav -->
 		<div id="navigation">
 			<ul>
-			    <li><a href="#" class="active"><span>Dashboard</span></a></li>
+			    <li><a href="/dashboard" class="active"><span>Dashboard</span></a></li>
 			    <li><a href="/courses"><span>Courses</span></a></li>
 			    <li><a href="/users"><span>User Management</span></a></li>
-			    <li><a href="#"><span>Photo Gallery</span></a></li>
-			    <li><a href="#"><span>Products</span></a></li>
-			    <li><a href="#"><span>Services Control</span></a></li>
+			    <li><a href="/assignments"><span>Assignments</span></a></li>
+			    <li><a href="/attachments"><span>Attachments</span></a></li>
 			</ul>
 		</div>
 		<!-- End Main Nav -->

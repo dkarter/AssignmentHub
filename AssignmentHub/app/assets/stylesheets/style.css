@@ -82,7 +82,7 @@ h3 a{ text-decoration: none; }
 .table {}
 .table th{ background:#fffdfa url(/assets/th.gif) repeat-x 0 0; color:#818181; text-align: left; padding:7px 10px; border-bottom:solid 1px #d2d1cb;}
 .table td{ background:#fbfcfc;  border-bottom:solid 1px #e0e0e0; padding:8px 10px; }
-.table tr.odd td{ background:#f8f8f8; }
+.table tr:nth-child(odd) td { background:#f8f8f8; }
 .table tr:hover td{ background:#fff9e1; }
 .table a.ico{ }
 

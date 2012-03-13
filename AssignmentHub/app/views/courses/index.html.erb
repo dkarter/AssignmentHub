@@ -44,8 +44,8 @@
 						<td><%= course.user.name if course.user %></td>
 					<% end %>
 				    <td><%= link_to 'Show', course %></td>
-				    <td><%= link_to 'Edit', edit_course_path(course) %></td>
-				    <td><%= link_to 'Destroy', course, confirm: 'Are you sure?', method: :delete %></td>
+				    <td><%= link_to 'Edit', edit_course_path(course), :class => 'ico edit' %></td>
+				    <td><%= link_to 'Destroy', course, confirm: 'Are you sure?', method: :delete, :class => 'ico del' %></td>
 				  </tr>
 				<% end if @courses %>
 			</table>
