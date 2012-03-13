@@ -1,15 +1,11 @@
-<%= start_form_tag :action=> "login" %>
+	<%= start_form_tag :action=> "login" %>
 
-<h3>Login</h3>
-
-<label for="user_name">Login:</label><br/>
-<%= text_field "user", "name", :size => 20 %><br/>
-
-<label for="user_password">Password:</label><br/>
-<%= password_field "user", "password", :size => 20 %><br/>
-
-<%= submit_tag "Submit" %>
-
-<%= link_to 'Register', :action => 'new' %>
-
-<%= end_form_tag %>
+			<label for="user">Username</label>
+			<%= text_field "user", "name", :size => 20 %>
+			<label for="user">Password</label>
+			<%= password_field "user", "password", :size => 20 %>
+			
+			<%= submit_tag "Login" %>
+			
+			<%= link_to 'Register', :action => 'new' %>
+	<%= end_form_tag %>
