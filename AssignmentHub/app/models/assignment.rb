@@ -1,3 +1,3 @@
 class Assignment < ActiveRecord::Base
-  belongs_to Course
+  belongs_to :course
 end

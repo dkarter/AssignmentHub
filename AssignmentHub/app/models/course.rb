@@ -1,6 +1,6 @@
 class Course < ActiveRecord::Base
-  has_many Assignments
-  has_many Teachers
-  has_many Attachments
-  belongs_to User
+  has_many :assignments
+  has_many :teachers
+  has_many :attachments
+  belongs_to :user
 end

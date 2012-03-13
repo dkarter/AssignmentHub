@@ -1,6 +1,8 @@
 require 'digest/sha1'
 
 class User < ActiveRecord::Base
+  has_many :courses
+
   # Validation of various parameters. Important: require valid email format, unique username
 
   before_save :encrypt_password

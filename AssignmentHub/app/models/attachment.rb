@@ -1,4 +1,4 @@
 class Attachment < ActiveRecord::Base
-  belongs_to Assignment
-  belongs_to Course
+  belongs_to :assignment
+  belongs_to :course
 end
