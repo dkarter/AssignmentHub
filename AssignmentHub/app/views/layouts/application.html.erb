@@ -19,14 +19,28 @@
 		<!-- Logo + Top Nav -->
 		<div id="top">
 			<h1><a href="#">AssignmentHub</a></h1>
+			
+			
 			<div id="top-navigation">
-				Welcome <a href="#"><strong>Administrator</strong></a>
-				<span>|</span>
-				<a href="#">Help</a>
-				<span>|</span>
-				<a href="#">Profile Settings</a>
-				<span>|</span>
-				<a href="#">Log out</a>
+				<% 
+				   if current_user 
+					@curr = User.find(current_user)
+				%>
+					
+					Welcome <a href="#"><strong><%= @curr.first + " " + @curr.last %></strong></a>
+					<span>|</span>
+					<a href="#">Help</a>
+					<span>|</span>
+					<a href="#">Profile Settings</a>
+					<span>|</span>
+					<%= link_to 'Log out', log_out_path %>
+				<% else %>
+					<%= link_to 'Register', sign_up_path %>
+					<span>|</span>
+					<%= link_to "Log In", log_in_path %>
+					<span>|</span>
+					<%= link_to "Forgot Password", forgot_password_path %>
+				<% end %>
 			</div>
 		</div>
 		<!-- End Logo + Top Nav -->
@@ -35,8 +49,8 @@
 		<div id="navigation">
 			<ul>
 			    <li><a href="#" class="active"><span>Dashboard</span></a></li>
-			    <li><a href="#"><span>New Articles</span></a></li>
-			    <li><a href="#"><span>User Management</span></a></li>
+			    <li><a href="/courses"><span>Courses</span></a></li>
+			    <li><a href="/users"><span>User Management</span></a></li>
 			    <li><a href="#"><span>Photo Gallery</span></a></li>
 			    <li><a href="#"><span>Products</span></a></li>
 			    <li><a href="#"><span>Services Control</span></a></li>

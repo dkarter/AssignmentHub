@@ -1,6 +1,8 @@
 <!-- Content -->
 <div id="content">
 	<%= form_for(@course) do |f| %>
+		<!--% @course.user = User.find(current_user) %-->
+
 	  <% if @course.errors.any? %>
 	    <div id="error_explanation">
 	      <h2><%= pluralize(@course.errors.count, "error") %> prohibited this course from being saved:</h2>

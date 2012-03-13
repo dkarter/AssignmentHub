@@ -3,14 +3,12 @@ class ApplicationController < ActionController::Base
   protect_from_forgery
 
 
-  private
-
+  private 
   helper_method :current_user
 
   private
-
   def current_user
-    @current_user ||= User.find(session[:name]) if session[:name]
+    @current_user = User.where(:name => session[:name]) if session[:name]
   end
   
   #fix ugly HTML for form errors  -Dorian

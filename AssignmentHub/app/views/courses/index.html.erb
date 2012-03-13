@@ -41,9 +41,12 @@
 				    <td><%= link_to 'Edit', edit_course_path(course) %></td>
 				    <td><%= link_to 'Destroy', course, confirm: 'Are you sure?', method: :delete %></td>
 				  </tr>
-				<% end %>
+				<% end if @courses %>
 			</table>
-
+			
+			<% if !@courses %>
+				<div class="ac">No Courses Found... Add one now.</div>
+			<% end %>
 
 			<!-- Pagging -->
 			<div class="pagging">

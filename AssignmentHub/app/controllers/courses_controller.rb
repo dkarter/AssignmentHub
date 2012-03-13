@@ -3,7 +3,16 @@ class CoursesController < ApplicationController
   # GET /courses.json
   def index
     @courses = Course.all
-
+    
+    #this is supposed to show only the courses assigned for the user
+    if false
+      if current_user
+        @courses = Course.where(:user => User.find(current_user))
+      else
+        @courses = nil
+      end
+    end
+    
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @courses }
