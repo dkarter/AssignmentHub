@@ -1,13 +1,130 @@
-<html>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-  <title>AssignmentHub</title>
-  <%= stylesheet_link_tag    "application", :media => "all" %>
-  <%= javascript_include_tag "application" %>
-  <%= csrf_meta_tags %>
+	<title>AssignmentHub</title>
+
+	<!-- CSS Files -->
+	<%= stylesheet_link_tag    "style", :media => "all" %>
+	
+	<!-- JS Files -->
+	<%= javascript_include_tag "application" %>
+	<%= javascript_include_tag "jquery-1.7.1" %>
+	
+	<script language="javascript">
+		$(document).ready(function() {
+			var links = $("#navigation a");
+
+			for (i=0; i<links.length; i++) {
+				if (window.location.href.indexOf($(links[i]).attr("href")) != -1)
+					$(links[i]).addClass("active");
+				else
+					$(links[i]).removeClass("active");
+			}
+		});
+		
+	</script>
+	
+	<!--Meta Tags -->
+	<%= csrf_meta_tags %>
 </head>
 <body>
-<%= yield %>
+<!-- Header -->
+<div id="header">
+	<div class="shell">
+		<!-- Logo + Top Nav -->
+		<div id="top">
+			<h1><a href="#">AssignmentHub</a></h1>
+			
+			
+			<div id="top-navigation">
+				<% 
+				   if current_user 
+					@curr = User.find(current_user)
+				%>
+					
+					Welcome <a href="#"><strong><%= @curr.first + " " + @curr.last %></strong></a>
+					<span>|</span>
+					<a href="#">Help</a>
+					<span>|</span>
+					<a href="#">Profile Settings</a>
+					<span>|</span>
+					<%= link_to 'Log out', log_out_path %>
+				<% else %>
+					<%= link_to 'Register', sign_up_path %>
+					<span>|</span>
+					<%= link_to "Log In", log_in_path %>
+					<span>|</span>
+					<%= link_to "Forgot Password", forgot_password_path %>
+				<% end %>
+			</div>
+		</div>
+		<!-- End Logo + Top Nav -->
+		
+		<!-- Main Nav -->
+		<div id="navigation">
+			<ul>
+			    <li><a href="/dashboard" class="active"><span>Dashboard</span></a></li>
+			    <li><a href="/courses"><span>Courses</span></a></li>
+			    <li><a href="/users"><span>User Management</span></a></li>
+			    <li><a href="/assignments"><span>Assignments</span></a></li>
+			    <li><a href="/attachments"><span>Attachments</span></a></li>
+			</ul>
+		</div>
+		<!-- End Main Nav -->
+	</div>
+</div>
+<!-- End Header -->
 
+<!-- Container -->
+<div id="container">
+	<div class="shell">
+		
+		<!-- Small Nav -->
+		<div class="small-nav">
+			<a href="#">Dashboard</a>
+			<span>&gt;</span>
+			Upcoming Assignments
+		</div>
+		<!-- End Small Nav -->
+		
+		<!-- Message OK -->		
+		<div class="msg msg-ok hidden">
+			<p><strong>Your file was uploaded succesifully!</strong></p>
+			<a href="#" class="close">close</a>
+		</div>
+		<!-- End Message OK -->		
+		
+		<!-- Message Error -->
+		<div class="msg msg-error hidden">
+			<p><strong>You must select a file to upload first!</strong></p>
+			<a href="#" class="close">close</a>
+		</div>
+		<!-- End Message Error -->
+		<br />
+		<!-- Main -->
+		<div id="main">
+			<div class="cl">&nbsp;</div>
+			
+			<%= yield %>
+			
+						
+			<div class="cl">&nbsp;</div>			
+		</div>
+		<!-- Main -->
+	</div>
+</div>
+<!-- End Container -->
 
+<!-- Footer -->
+<div id="footer">
+	<div class="shell">
+		<span class="left">&copy; 2012 - AssignmentHub</span>
+		<span class="right">
+			
+		</span>
+	</div>
+</div>
+<!-- End Footer -->
+	
 </body>
 </html>
