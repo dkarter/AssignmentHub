@@ -12,6 +12,7 @@ class User < ActiveRecord::Base
   validates_presence_of :name, :password, :first, :last, :email, :user_type
   validates_format_of :email, :with => /^([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})$/i, :message => "Invalid email"
   validates_uniqueness_of :name
+  validates_confirmation_of :password
 
   def self.authenticate(name, pass)
     user = find_by_name(name)

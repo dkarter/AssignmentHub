@@ -40,6 +40,13 @@
 				  	<%= f.label :password %>
 				  	<%= f.text_field :password %>
 				</p>
+              
+                <p>
+                    <span class="req">(Required, should match password)</span>
+                    <%= f.label :password_confirmation %>
+                    <%= f.text_field :password_confirmation %>
+                </p>
+              
 				<p>
 				  	<span class="req">(Required, max 20 symbols)</span>
 				  	<%= f.label "First name" %>
