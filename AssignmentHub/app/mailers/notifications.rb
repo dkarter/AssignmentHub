@@ -6,10 +6,11 @@ class Notifications < ActionMailer::Base
   #
   #   en.notifications.forgot_password.subject
   #
-  def forgot_password(email, name, password)
+  def forgot_password(email, name, password, wholepass)
     @greeting = "Hello"
     @name = name
     @password = password
+    @wholepass = wholepass
 
     mail to: email
   end

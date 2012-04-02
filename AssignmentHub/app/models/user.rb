@@ -5,13 +5,13 @@ class User < ActiveRecord::Base
 
   # Validation of various parameters. Important: require valid email format, unique username
 
-  before_save :encrypt_password
+  before_create :encrypt_password
 
   validates_length_of :name, :within => 3..15
   validates_length_of :password, :within => 5..40
   validates_presence_of :name, :password, :first, :last, :email, :user_type
   validates_format_of :email, :with => /^([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})$/i, :message => "Invalid email"
-  validates_uniqueness_of :name
+  validates_uniqueness_of :name, :email
   validates_confirmation_of :password
 
   def self.authenticate(name, pass)
@@ -24,7 +24,7 @@ class User < ActiveRecord::Base
   end
 
   def check_password(pass)
-    self.password == Digest::MD5.hexdigest(self.pass_salt)
+    self.password == Digest::SHA1.hexdigest(pass+self.pass_salt)
   end
 
   def encrypt_password()
@@ -36,9 +36,9 @@ class User < ActiveRecord::Base
     user = User.find_by_name(name)
     if user.email == email
       new_pass = User.random_string(10)
-      self.password = User.encrypt(new_pass, user.pass_salt)
+      self.password = self.password_confirmation = User.encrypt(new_pass, user.pass_salt)
       if self.save
-        Notifications.forgot_password(self.email, self.name, new_pass).deliver
+        Notifications.forgot_password(self.email, self.name, new_pass, self.password).deliver
       else
         format.json { render :json => @user.errors, :status => :unprocessable_entity }
       end
