@@ -32,19 +32,22 @@ class User < ActiveRecord::Base
     self.password = User.encrypt(self.password, self.pass_salt)
   end
 
+  def encrypt_given_password(password)
+    if !self.pass_salt
+      self.pass_salt = User.random_string(10)
+    end
+    self.password = password
+    self.password = self.password_confirmation = User.encrypt(password, self.pass_salt)
+  end
+
   def forgot_password(name, email)
     user = User.find_by_name(name)
     if user.email == email
       new_pass = User.random_string(10)
-      self.password = self.password_confirmation = User.encrypt(new_pass, user.pass_salt)
-      if self.save
-        Notifications.forgot_password(self.email, self.name, new_pass, self.password).deliver
-      else
-        format.json { render :json => @user.errors, :status => :unprocessable_entity }
+      user.encrypt_given_password(new_pass)
+      user.save
+      Notifications.forgot_password(self.email, self.name, new_pass, self.password).deliver
       end
-    else
-
-    end
   end
 
   protected
