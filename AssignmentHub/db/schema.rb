@@ -11,7 +11,11 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
+<<<<<<< HEAD
 ActiveRecord::Schema.define(:version => 20120313084840) do
+=======
+ActiveRecord::Schema.define(:version => 20120403125145) do
+>>>>>>> 17dee486ad2dae980e5d1dd163d9b52603d8b177
 
   create_table "assignments", :force => true do |t|
     t.string   "name"
@@ -42,9 +46,11 @@ ActiveRecord::Schema.define(:version => 20120313084840) do
     t.string   "school"
     t.string   "section"
     t.string   "code"
-    t.datetime "created_at",    :null => false
-    t.datetime "updated_at",    :null => false
+    t.datetime "created_at",                       :null => false
+    t.datetime "updated_at",                       :null => false
     t.integer  "user_id"
+    t.string   "color"
+    t.boolean  "published",     :default => false
   end
 
   create_table "teachers", :force => true do |t|
