@@ -4,6 +4,7 @@ require File.expand_path('../application', __FILE__)
 # Initialize the rails application
 AssignmentHub::Application.initialize!
 
+
 # Configure our mailer (currently causes some problems)
 #ActionMailer::Base.delivery_method = :smtp
 #ActionMailer::Base.server_settings = {

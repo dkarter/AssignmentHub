@@ -22,6 +22,10 @@ end
 
 gem 'jquery-rails'
 
+#Dorian: jquery autocomplete plugin
+#see https://github.com/crowdint/rails3-jquery-autocomplete
+gem 'rails3-jquery-autocomplete'
+
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
 

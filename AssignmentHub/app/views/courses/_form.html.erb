@@ -1,3 +1,5 @@
+
+
 <!-- Content -->
 <div id="content">
 	<%= form_for(@course) do |f| %>
@@ -41,7 +43,7 @@
 			  </p>
 			  <p>
 			    <%= f.label :school %>
-			    <%= f.text_field :school %>
+			    <%= f.autocomplete_field :school, autocomplete_university_name_courses_path %>
 			  </p>
 			  <p>
 			    <%= f.label :section %>

@@ -1,4 +1,7 @@
 class CoursesController < ApplicationController
+  
+  autocomplete :university, :name, :full => true
+  
   # GET /courses
   # GET /courses.json
   def index

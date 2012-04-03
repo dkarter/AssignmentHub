@@ -1,4 +1,6 @@
 AssignmentHub::Application.routes.draw do
+  resources :universities
+
   get "log_out" => "sessions#destroy", :as => "log_out"
   get "log_in" => "sessions#new", :as => "log_in"
   get "sign_up" => "users#new", :as => "sign_up"
@@ -11,7 +13,10 @@ AssignmentHub::Application.routes.draw do
 
   resources :assignments
 
-  resources :courses
+  #Dorian: added autocomplete route for universities
+  resources :courses do
+    get :autocomplete_university_name, :on => :collection
+  end
 
   resources :users
   resources :sessions
