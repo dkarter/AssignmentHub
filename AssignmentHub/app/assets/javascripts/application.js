@@ -15,3 +15,13 @@
 //= require jquery_ujs
 //= require autocomplete-rails
 
+
+//for color picker - TODO: Convert to jQuery
+function set_color_picker(element_name,color){
+    items = document.getElementsByClassName('coloritem');
+    for(x=0;x<items.length;x++){
+        Element.removeClassName(items[x],'cpselected');
+    }
+    Element.addClassName(element_name,'cpselected')
+    document.getElementById('hidden_color_picker').value = color
+}

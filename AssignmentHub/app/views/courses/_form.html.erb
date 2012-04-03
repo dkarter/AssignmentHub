@@ -1,8 +1,7 @@
 
-
 <!-- Content -->
 <div id="content">
-	<%= form_for(@course) do |f| %>
+	<%= form_for(@course, :builder => ApplicationHelper::ColorPickerFormBuilder) do |f| %>
 	  <% if @course.errors.any? %>
 	    <div id="error_explanation">
 	      <h2><%= pluralize(@course.errors.count, "error") %> prohibited this course from being saved:</h2>
@@ -28,9 +27,15 @@
 		</div>
 		<!-- End Box Head -->
 	
+			
 		
 			<!-- Form -->
 			<div class="form">
+			  <p>
+				<%= f.label :color %>
+				<%= f.color_picker :color, :avaiable => COURSE_COLORS, :selected=> @course.color %>
+				<br />
+			  </p>
 			  <p>
 				<span class="req">(Required, max 100 symbols)</span>
 				<%= f.label :name %>
