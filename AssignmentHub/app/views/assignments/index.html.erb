@@ -23,6 +23,7 @@
     <td><%= assignment.notes %></td>
     <td><%= link_to 'Show', assignment %></td>
     <td><%= link_to 'Edit', edit_assignment_path(assignment) %></td>
+    <td><%= link_to 'Remind', :action => 'schedule_notification'%></td>
     <td><%= link_to 'Destroy', assignment, confirm: 'Are you sure?', method: :delete %></td>
   </tr>
 <% end %>
