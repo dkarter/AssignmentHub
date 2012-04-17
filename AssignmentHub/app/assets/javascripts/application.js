@@ -17,11 +17,21 @@
 
 
 //for color picker - TODO: Convert to jQuery
-function set_color_picker(element_name,color){
-    items = document.getElementsByClassName('coloritem');
-    for(x=0;x<items.length;x++){
-        Element.removeClassName(items[x],'cpselected');
-    }
-    Element.addClassName(element_name,'cpselected')
-    document.getElementById('hidden_color_picker').value = color
+//create unobtrosive bind to handle color pick automatically determining color
+
+$(document).ready(function() {
+	$('.delete_from_index').bind('ajax:success', function() {
+			$(this).closest('tr').fadeOut();
+	});
+});
+
+function remove_field(link) {
+	$(link).prev("input[type=hidden]").val("1");
+	$(link).closest(".fields").fadeOut();
+}
+
+function add_fields(link, association, content) {
+  var new_id = new Date().getTime();
+  var regexp = new RegExp("new_" + association, "g");
+  $(link).parent().before(content.replace(regexp, new_id));
 }

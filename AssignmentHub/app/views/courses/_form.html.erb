@@ -1,7 +1,6 @@
-
 <!-- Content -->
 <div id="content">
-	<%= form_for(@course, :builder => ApplicationHelper::ColorPickerFormBuilder) do |f| %>
+	<%= form_for(@course, :remote => true, :builder => ApplicationHelper::ColorPickerFormBuilder) do |f| %>
 	  <% if @course.errors.any? %>
 	    <div id="error_explanation">
 	      <h2><%= pluralize(@course.errors.count, "error") %> prohibited this course from being saved:</h2>
@@ -26,8 +25,9 @@
 			<h2>Edit Course</h2>
 		</div>
 		<!-- End Box Head -->
-	
 			
+			<div id="ajax-response" class="hidden">
+			</div>
 		
 			<!-- Form -->
 			<div class="form">
@@ -47,15 +47,28 @@
 			    <%= f.text_field :course_number %>
 			  </p>
 			  <p>
-			    <%= f.label :school %>
-			    <%= f.autocomplete_field :school, autocomplete_university_name_courses_path %>
-			  </p>
-			  <p>
 			    <%= f.label :section %>
 			    <%= f.text_field :section %>
 			  </p>
 			  <p>
-			    <%= f.label :code %>
+			    <%= f.label :school %>
+			    <%= f.autocomplete_field :school, autocomplete_university_name_courses_path %>
+			  </p>
+			  <p>
+				<%= f.label :teachers, "Instructors:" %>
+				<%= f.fields_for :teachers do |ff| %>
+				    <%= render 'teacher_fields', :f => ff %>
+				<% end %>
+				<p><%= link_to_add_fields "Add Instructor", f, :teachers %></p>
+			  </p>
+			  <p>
+			    <%= f.label :published %>
+				<%= f.check_box :published %>
+			  </p>
+			  
+
+			 <p id="code" class="hidden">
+			    <%= f.label :code, "Publishing Code" %>
 			    <%= f.text_field :code %>
 			  </p>
 			</div>
@@ -69,6 +82,22 @@
 			<!-- End Form Buttons -->
 	</div>
 	<!-- End Box -->
+		
+		<script language="javascript">
+			//initial setup (hide code if not published)
+		  	if (<%=@course.published%>)
+				$("#code").toggle();
+
+			//script to toggle the course textbox when the published checkmark is clicked	
+			$("#course_published").click(function(){
+				$("#code").toggle("slow");
+			});
+
+			// script to automatically fill in last university used in the system for new course entries
+			if (<%=!@course.id%>)
+				$("#course_school").val("<%=@last_school_used%>");
+			
+		 </script>
 
 	<% end %>
 
@@ -99,3 +128,5 @@
 	<!-- End Box -->
 </div>
 <!-- End Sidebar -->
+
+

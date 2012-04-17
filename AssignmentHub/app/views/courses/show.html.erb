@@ -25,6 +25,13 @@
   <%= @course.code %>
 </p>
 
+<p>
+	<ol>
+		<% for teacher in @course.teachers %>
+			<li><%= teacher.name %></li>
+		<% end %>
+	</ol>
+</p>
 
 <%= link_to 'Edit', edit_course_path(@course) %> |
 <%= link_to 'Back', courses_path %>
