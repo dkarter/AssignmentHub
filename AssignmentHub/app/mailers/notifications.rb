@@ -5,13 +5,26 @@ class Notifications < ActionMailer::Base
   # with the following lookup:
   #
   #   en.notifications.forgot_password.subject
-  #
+
+  # See notifications/forgot_password.text.erb
+
   def forgot_password(email, name, password, wholepass)
     @greeting = "Hello"
     @name = name
     @password = password
-    @wholepass = wholepass
 
     mail to: email
+  end
+
+  # See notifications/deliver_notification.text.erb
+
+  def deliver_notification(name, course, assignment, due)
+    @greeting = "Hello"
+    @name = name
+    @coursename = course
+    @assignment = assignment
+    @due_date = due
+
+    mail to: user.email
   end
 end
