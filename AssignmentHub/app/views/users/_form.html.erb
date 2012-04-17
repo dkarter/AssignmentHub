@@ -69,7 +69,7 @@
 				<p>
 					<span class="req">(Required)</span>
 				  	<%= f.label :user_type %>
-				  	<%= select_tag(:user_type, options_for_select([['Normal', '1'],['Admin', '0']]))  %>
+				  	<%= f.select :user_type, User::USERTYPE  %>
 				</p>
 			
 			</div>

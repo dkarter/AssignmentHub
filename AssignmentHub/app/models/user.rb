@@ -14,6 +14,10 @@ class User < ActiveRecord::Base
   validates_uniqueness_of :name, :email
   validates_confirmation_of :password
 
+  USERTYPE = [['Normal', '1'],
+              ['Admin', '0']]
+
+
   def self.authenticate(name, pass)
     user = find_by_name(name)
     if User.encrypt(pass, user.pass_salt) == user.password
