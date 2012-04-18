@@ -77,6 +77,7 @@ class AttachmentsController < ApplicationController
 
     respond_to do |format|
       format.html { redirect_to attachments_url }
+      format.js   { render :nothing => true }
       format.json { head :no_content }
     end
   end

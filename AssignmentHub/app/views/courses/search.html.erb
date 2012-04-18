@@ -8,11 +8,11 @@
 			<h2 class="left">Listing Courses</h2>
 			<div class="right">
 				
-				<label for="search">search courses</label>
-				<input name="search" type="text" class="field small-field" />
-				<input type="submit" class="button" value="search" />
-				
+				<label>search courses</label>
+				<!--input type="text" class="field small-field" /-->
+				<!--input type="submit" class="button" value="search" /-->
 				<% form_tag course_search_path, :method => 'get' do %>
+				  
 				    <%= text_field_tag :search, params[:search] %>
 				    <%= submit_tag "Search", :name => nil %>
 				<% end %>
@@ -55,7 +55,7 @@
 					<% end %>
 				    <td><%= link_to 'Show', course %></td>
 				    <td><%= link_to 'Edit', edit_course_path(course), :class => 'ico edit' %></td>
-				    <td><%= link_to 'Destroy', course, confirm: 'Are you sure?', method: :delete, :class => 'delete_from_index ico del', :remote => true %></td>
+				    <td><%= link_to 'Destroy', course, confirm: 'Are you sure?', method: :delete, :class => 'delete_course ico del', :remote => true %></td>
 				  </tr>
 				<% end if @courses %>
 			</table>

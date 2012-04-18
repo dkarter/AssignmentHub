@@ -1,34 +1,111 @@
-<h1>Listing assignments</h1>
+<!-- Content -->
+<div id="content">
+	
+	<!-- Box -->
+	<div class="box">
+		<!-- Box Head -->
+		<div class="box-head">
+			<h2 class="left">Listing Assignments</h2>
+			<div class="right">
+				
+				<label for="search">search assignments</label>
+				<input name="search" type="text" class="field small-field" />
+				<input type="submit" class="button" value="search" />
+			
+			</div>
+		</div>
+		<!-- End Box Head -->	
 
-<table>
-  <tr>
-    <th>Name</th>
-    <th>Type</th>
-    <th>Start date</th>
-    <th>Due date</th>
-    <th>Priority</th>
-    <th>Notes</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
+		<!-- Table -->
+		<div class="table">
+			<table width="100%" border="0" cellspacing="0" cellpadding="0">
+				<tr>
+					<th width="13"><input type="checkbox" class="checkbox" /></th>
+				    <th>Name</th>
+				    <th>Type</th>
+				    <th>Start date</th>
+				    <th>Due date</th>
+				    <th>Priority</th>
+				    <th>Notes</th>
+				    <% if is_admin %>
+						<th>User</th>
+					<% end %>
+				    <th></th>
+				    <th></th>
+				    <th></th>
+				  </tr>
 
-<% @assignments.each do |assignment| %>
-  <tr>
-    <td><%= assignment.name %></td>
-    <td><%= assignment.type %></td>
-    <td><%= assignment.start_date %></td>
-    <td><%= assignment.due_date %></td>
-    <td><%= assignment.priority %></td>
-    <td><%= assignment.notes %></td>
-    <td><%= link_to 'Show', assignment %></td>
-    <td><%= link_to 'Edit', edit_assignment_path(assignment) %></td>
-    <td><%= link_to 'Remind', :action => 'schedule_notification'%></td>
-    <td><%= link_to 'Destroy', assignment, confirm: 'Are you sure?', method: :delete %></td>
-  </tr>
-<% end %>
-</table>
+				<% @assignments.each do |assignment| %>
+				  <tr>
+					<td><input type="checkbox" class="checkbox" /></td>
+				    <td><%= assignment.name %></td>
+				    <td><%= assignment.type %></td>
+				    <td><%= assignment.start_date %></td>
+				    <td><%= assignment.due_date %></td>
+				    <td><%= assignment.priority %></td>
+				    <td><%= truncate(assignment.notes, 10, "...") %></td>
+					<!--will show usernames to which assignments belong to for admin user -->
+					<% if is_admin %>
+						<td><%= assignment.user.name if assignment.user %></td>
+					<% end %>
+				    <td><%= link_to 'Show', assignment %></td>
+				    <td><%= link_to 'Edit', edit_assignment_path(assignment), :class => 'ico edit' %></td>
+				    <td><%= link_to 'Destroy', assignment, confirm: 'Are you sure?', method: :delete, :class => 'delete_from_index ico del', :remote => true %></td>
+				  </tr>
+				<% end if @assignments %>
+			</table>
+			
+			<% if !@assignments || @assignments.length == 0 %>
+				<div class="ac">No Assignments Found... Add one now.</div>
+			<% end %>
 
-<br />
+			<!-- Pagging -->
+			<div class="pagging">
+				<div class="left">Showing 1-<%= @assignments.length if @assignments %> of <%= @assignments.length if @assignments %></div>
+				<div class="right">
+					<a href="#">Previous</a>
+					<a href="#">1</a>
+					<a href="#">2</a>
+					<a href="#">3</a>
+					<a href="#">4</a>
+					<a href="#">245</a>
+					<span>...</span>
+					<a href="#">Next</a>
+					<a href="#">View all</a>
+				</div>
+			</div>
+			<!-- End Pagging -->
 
-<%= link_to 'New Assignment', new_assignment_path %>
+		</div>
+		<!-- Table -->
+
+	</div>
+	<!-- End Box -->
+	
+</div>
+<!-- End Content -->
+
+<!-- Sidebar -->
+<div id="sidebar">
+	
+	<!-- Box -->
+	<div class="box">
+		
+		<!-- Box Head -->
+		<div class="box-head">
+			<h2>Management</h2>
+		</div>
+		<!-- End Box Head-->
+		
+		<div class="box-content">
+			<%= link_to 'Add New Assignment', new_assignment_path, :class => 'silverCss3Button' %>
+			<div class="cl">&nbsp;</div>
+			
+			<p class="select-all"><input type="checkbox" class="checkbox" /><label>select all</label></p>
+			<p><a href="#">Delete Selected</a></p>
+			
+		</div>
+	</div>
+	<!-- End Box -->
+</div>
+<!-- End Sidebar -->

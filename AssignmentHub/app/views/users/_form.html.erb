@@ -69,7 +69,7 @@
 				<p>
 					<span class="req">(Required)</span>
 				  	<%= f.label :user_type %>
-				  	<%= f.text_field :user_type %>
+				  	<%= f.select :user_type, User::USERTYPE  %>
 				</p>
 			
 			</div>
