@@ -6,7 +6,7 @@ class Assignment < ActiveRecord::Base
     user = course.user.name
     assignment = self.name
     due = self.due_date
-    NotificationMailer.send_later(:deliver_notification, user, course, assignment, due)
+    NotificationMailer.send_at(due - 1.day, :deliver_notification, user, course, assignment, due)
   end
 
 end
