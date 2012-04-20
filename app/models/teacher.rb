@@ -20,5 +20,5 @@ class Teacher < ActiveRecord::Base
   ['Mr.', '0']]
 
   
-  has_attached_file :photo, :styles => {:thumb => "150x150>"}          
+  has_attached_file :photo, :styles => {:thumb => "300x300>"}          
 end
