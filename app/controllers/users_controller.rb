@@ -2,7 +2,17 @@ class UsersController < ApplicationController
   # GET /users
   # GET /users.json
   def index
-    @users = User.all
+    if current_user
+      @curr = User.find(current_user)
+      if @curr.user_type == 0
+          @users = User.all
+      else
+        redirect_to '/' and return
+      end
+    else
+      redirect_to sign_up_path and return
+    end
+
 
     respond_to do |format|
       format.html # index.html.erb

@@ -15,6 +15,7 @@ class CoursesController < ApplicationController
         @courses = Course.all
       else
         @courses = nil
+        redirect_to sign_up_path and return
       end
     #end
     
