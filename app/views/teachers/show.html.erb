@@ -1,0 +1,33 @@
+<p id="notice"><%= notice %></p>
+
+<%= image_tag @teacher.photo.url(:thumb) %>
+
+<p>
+  <b>Name:</b>
+  <%= @teacher.first %>
+  <%= @teacher.last %>
+</p>
+
+<p>
+  <b>Role:</b>
+  <%= @teacher.instructor_type %>
+</p>
+
+<p>
+  <b>Email:</b>
+  <%= @teacher.email %>
+</p>
+
+<p>
+  <b>Office Hours:</b>
+  <%= @teacher.office_hours %>
+</p>
+
+<p>
+  <b>Phone:</b>
+  <%= @teacher.phone %>
+</p>
+
+
+<%= link_to 'Edit', edit_teacher_path(@teacher) %> |
+<%= link_to 'Back', teachers_path %>

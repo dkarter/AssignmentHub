@@ -1,0 +1,28 @@
+<!-- Content -->
+<div id="content">
+	
+	<!-- Box -->
+	<div class="box">
+		<!-- Box Head -->
+		<div class="box-head">
+			<h2 class="left">Log In</h2>
+		</div>
+		<!-- End Box Head -->
+
+	<%= start_form_tag :action=> "login" %>
+
+			<label for="user">Username</label>
+			<%= text_field "user", "name", :size => 20 %>
+			<label for="user">Password</label>
+			<%= password_field "user", "password", :size => 20 %>
+			
+			<%= submit_tag "Login" %>
+			
+			<%= link_to 'Register', :action => 'new' %>
+	<%= end_form_tag %>
+	
+</div>
+<!-- End Box -->
+
+</div>
+<!-- End Content -->
