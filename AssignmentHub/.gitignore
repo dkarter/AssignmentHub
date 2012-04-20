@@ -16,3 +16,7 @@
 
 # ignore IDE bullshit!
 /.idea
+
+# Ignore stupid mac .DS_Store
+/.DS_Store
+/db/.DS_Store
