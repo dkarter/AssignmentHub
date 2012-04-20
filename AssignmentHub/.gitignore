@@ -20,3 +20,5 @@
 # Ignore stupid mac .DS_Store
 /.DS_Store
 /db/.DS_Store
+.DS_Store
+/AssignmentHub/.DS_Store
