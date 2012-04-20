@@ -37,7 +37,8 @@
 				<% @teachers.each do |teacher| %>
 				  <tr>
 					<td><input type="checkbox" class="checkbox" /></td>
-			    	<td><%= teacher.name %></td>
+			    	<td><%= teacher.first%>
+						<%= teacher.last %></td>
 				    <td><%= teacher.email %></td>
 				    <td><%= teacher.office_hours %></td>
 				    <td><%= teacher.phone %></td>

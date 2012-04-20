@@ -1,8 +1,16 @@
 <p id="notice"><%= notice %></p>
 
+<%= image_tag @teacher.photo.url(:thumb) %>
+
 <p>
   <b>Name:</b>
-  <%= @teacher.name %>
+  <%= @teacher.first %>
+  <%= @teacher.last %>
+</p>
+
+<p>
+  <b>Role:</b>
+  <%= @teacher.instructor_type %>
 </p>
 
 <p>
@@ -18,11 +26,6 @@
 <p>
   <b>Phone:</b>
   <%= @teacher.phone %>
-</p>
-
-<p>
-  <b>Type:</b>
-  <%= @teacher.instructor_type %>
 </p>
 
 

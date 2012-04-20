@@ -1,37 +1,107 @@
-<%= form_for(@teacher) do |f| %>
-  <% if @teacher.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@teacher.errors.count, "error") %> prohibited this teacher from being saved:</h2>
+<!-- Content -->
+<div id="content">
+	<%= form_for(@teacher, :html => {:multipart => true}) do |f| %>
+	  <% if @teacher.errors.any? %>
+	    <div id="error_explanation">
+	      <h2><%= pluralize(@teacher.errors.count, "error") %> prohibited this user from being saved:</h2>
 
-      <ul>
-      <% @teacher.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
+      
+	      <% @teacher.errors.full_messages.each do |msg| %>
+			<!-- Message Error -->
+			<div class="msg msg-error">
+				<p><strong><%= msg %></strong></p>
+				<a href="#" class="close">close</a>
+			</div>
+			<!-- End Message Error -->      
+	      <% end %>
+      
+	    </div>
+	  <% end %>
 
-  <div class="field">
-    <%= f.label :name %><br />
-    <%= f.text_field :name %>
-  </div>
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.text_field :email %>
-  </div>
-  <div class="field">
-    <%= f.label :office_hours %><br />
-    <%= f.text_field :office_hours %>
-  </div>
-  <div class="field">
-    <%= f.label :phone %><br />
-    <%= f.text_field :phone %>
-  </div>
-  <div class="field">
-    <%= f.label :instructor_type %><br />
-    <%= f.text_field :instructor_type %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
-<% end %>
+	<!-- Box -->
+	<div class="box">
+		<!-- Box Head -->
+		<div class="box-head">
+			<h2>Edit Teacher</h2>
+		</div>
+		<!-- End Box Head -->
+					<!-- Form -->
+					<div class="form">
+						
+						<p>
+							<span class="req">(Required)</span>
+						  	<%= f.label :title %>
+						  	<%= f.select :title, Teacher::TITLETYPE  %>
+						</p>
+						<p>
+						  	<span class="req">(Required, max 15 characters)</span>
+						  	<%= f.label "First name" %>
+						  	<%= f.text_field :first %>
+						</p>
+						<p>
+						  	<span class="req">(Required, max 15 characters)</span>
+						  	<%= f.label "Last name" %>
+						  	<%= f.text_field :last %>
+						</p>
+						<p>
+						  	<%= f.label "Role" %>
+					    	<%= select_tag(:instructor_type, options_for_select([['Professor', 'PR'],['Teaching Assistant', 'TA'],['Adjunct Professor', 'AD']]))  %>
+						</p>
+						<p>
+						  	<span class="req">(Required, max 25 characters)</span>
+						  	<%= f.label "Email address" %>
+						  	<%= f.text_field :email %>
+						</p>
+						<p>
+						  	<%= f.label "Phone number" %>
+						  	<%= f.text_field :phone %>
+						</p>
+						<p>
+							<%= f.label "Office Hours" %>
+						    <%= f.text_field :office_hours %>
+						</p>
+						<p>
+							<%=f.file_field :photo %>
+						</p>
+					</div>
+					<!-- End Form -->
+
+					<!-- Form Buttons -->
+					<div class="buttons">
+						<%= link_to 'Back', teachers_path, :class => 'button' %>
+						<%= f.submit 'Submit', :class => 'button' %>
+					</div>
+					<!-- End Form Buttons -->
+			</div>
+			<!-- End Box -->
+
+			<% end %>
+
+		</div>
+		<!-- End Content -->
+		
+
+<!-- Sidebar -->
+<div id="sidebar">
+	
+	<!-- Box -->
+	<div class="box">
+		
+		<!-- Box Head -->
+		<div class="box-head">
+			<h2>Management</h2>
+		</div>
+		<!-- End Box Head-->
+		
+		<div class="box-content">
+			<%= link_to 'Add New User', new_user_path, :class => 'silverCss3Button' %>
+			<div class="cl">&nbsp;</div>
+			
+			<p class="select-all"><input type="checkbox" class="checkbox" /><label>select all</label></p>
+			<p><a href="#">Delete Selected</a></p>
+			
+		</div>
+	</div>
+	<!-- End Box -->
+</div>
+<!-- End Sidebar -->
