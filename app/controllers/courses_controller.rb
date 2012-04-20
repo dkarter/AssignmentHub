@@ -107,7 +107,7 @@ class CoursesController < ApplicationController
   end
   
   def get_random_color
-    get_random_color = "%06x" % (rand * 0xffffff)
+    return "%06x" % (rand * 0xffffff)
   end
   
   def last_school_used

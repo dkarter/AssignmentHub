@@ -113,7 +113,7 @@ a.edit { background-image:url(/assets/edit.gif); margin-left:14px;}
 .form .inline-field .field { display:inline;}
 .form .req { font-size:13px; float:right; white-space:nowrap; color:#999;  }
 .form p, .form .field_with_errors { padding-bottom:15px; }
-.form p input, .form .field_with_errors input {
+.form p input, .form .field_with_errors input,  .form p textarea {
 	-moz-border-radius:4px; 
 	-webkit-border-radius:4px; 
 	width:716px;

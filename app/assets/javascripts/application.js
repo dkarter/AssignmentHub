@@ -20,9 +20,14 @@
 //create unobtrosive bind to handle color pick automatically determining color
 
 $(document).ready(function() {
+	//fade out animation on delete from indexes
 	$('.delete_from_index').bind('ajax:success', function() {
 			$(this).closest('tr').fadeOut();
 	});
+	
+	//date picker
+	$('input[name*="date"]').datepicker();
+	
 });
 
 function remove_field(link) {

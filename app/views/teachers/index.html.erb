@@ -31,14 +31,13 @@
 					<% end %>
 				    <th></th>
 				    <th></th>
-				    <th></th>
 				  </tr>
 
 				<% @teachers.each do |teacher| %>
 				  <tr>
 					<td><input type="checkbox" class="checkbox" /></td>
 			    	<td><%= image_tag teacher.photo.url(:thumb) %></td>
-					<td><%= Teacher::GetTitleFromValue(teacher.title) + " " + teacher.last + ", " + teacher.first %></td>
+					<td><%= link_to (Teacher::GetTitleFromValue(teacher.title) + " " + teacher.last + ", " + teacher.first), teacher %></td>
 				    <td><%= teacher.email %></td>
 				    <td><%= teacher.office_hours %></td>
 				    <td><%= teacher.phone %></td>
@@ -46,7 +45,6 @@
 					<% if is_admin %>
 						<td><%= teacher.user.name if teacher.user %></td>
 					<% end %>
-				    <td><%= link_to 'Show', teacher %></td>
 				    <td><%= link_to '', edit_teacher_path(teacher), :class => 'ico edit' %></td>
 				    <td><%= link_to '', teacher, confirm: 'Are you sure?', method: :delete, :class => 'delete_from_index ico del', :remote => true %></td>
 				  </tr>

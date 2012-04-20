@@ -8,5 +8,7 @@ class Course < ActiveRecord::Base
   validates_length_of :name, :maximum => 15, :message => "less than 15 characters please"
   
   #allows adding teachers (and TAs) from the course editing page, doesn't save blank names
-  accepts_nested_attributes_for :teachers, :allow_destroy => true, :reject_if => lambda { |a| a[:name].blank? }
+  accepts_nested_attributes_for :teachers, 
+                                :allow_destroy => true, 
+                                :reject_if => lambda { |a| a[:last].blank? && a[:first].blank?}
 end
