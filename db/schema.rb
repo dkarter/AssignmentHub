@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120420004002) do
+ActiveRecord::Schema.define(:version => 20120420004003) do
 
   create_table "assignments", :force => true do |t|
     t.string   "name"
@@ -73,13 +73,10 @@ ActiveRecord::Schema.define(:version => 20120420004002) do
     t.string   "office_hours"
     t.string   "phone"
     t.string   "instructor_type"
-    t.datetime "created_at",         :null => false
-    t.datetime "updated_at",         :null => false
+    t.datetime "created_at",       :null => false
+    t.datetime "updated_at",       :null => false
     t.integer  "title"
     t.string   "first"
-    t.string   "photo_file_name"
-    t.string   "photo_content_type"
-    t.integer  "photo_file_size"
     t.datetime "photo_updated_at"
   end
 
