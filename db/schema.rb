@@ -11,17 +11,18 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120420004003) do
+
+ActiveRecord::Schema.define(:version => 20120420133033) do
 
   create_table "assignments", :force => true do |t|
     t.string   "name"
-    t.string   "type"
+    t.string   "assignment_type"
     t.string   "start_date"
     t.string   "due_date"
     t.integer  "priority"
     t.text     "notes"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",      :null => false
+    t.datetime "updated_at",      :null => false
     t.integer  "course_id"
   end
 

@@ -23,8 +23,8 @@
 					<th width="13"><input type="checkbox" class="checkbox" /></th>
 				    <th>Name</th>
 				    <th>Type</th>
-				    <th>Start date</th>
-				    <th>Due date</th>
+				    <th>Start Date</th>
+				    <th>Due Date</th>
 				    <th>Priority</th>
 				    <th>Notes</th>
 				    <% if is_admin %>
@@ -39,14 +39,14 @@
 				  <tr>
 					<td><input type="checkbox" class="checkbox" /></td>
 				    <td><%= assignment.name %></td>
-				    <td><%= assignment.type %></td>
+				    <td><%= assignment.assignment_type %></td>
 				    <td><%= assignment.start_date %></td>
 				    <td><%= assignment.due_date %></td>
 				    <td><%= assignment.priority %></td>
-				    <td><%= truncate(assignment.notes, 10, "...") %></td>
+				    <td><%= truncate(assignment.notes, :length => 10, :omission => "...") %></td>
 					<!--will show usernames to which assignments belong to for admin user -->
 					<% if is_admin %>
-						<td><%= assignment.user.name if assignment.user %></td>
+						<td><%= assignment.course.user.name if assignment.course %></td>
 					<% end %>
 				    <td><%= link_to 'Show', assignment %></td>
 				    <td><%= link_to 'Edit', edit_assignment_path(assignment), :class => 'ico edit' %></td>
