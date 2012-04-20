@@ -20,5 +20,11 @@ class Teacher < ActiveRecord::Base
   ['Mr.', '0']]
 
   
-  has_attached_file :photo, :styles => {:thumb => "300x300>"}          
+  has_attached_file :photo, :styles => {:large => "300x300>", :small => "150x150>", :thumb => "57x75#"}          
+  
+  
+  def self.GetTitleFromValue(value)
+    temp = TITLETYPE.select{ |x| x[1] == value.to_s() }.first
+    return temp ? temp.first : ''
+  end
 end

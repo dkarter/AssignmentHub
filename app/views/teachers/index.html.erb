@@ -21,11 +21,11 @@
 			<table width="100%" border="0" cellspacing="0" cellpadding="0">
 				<tr>
 					<th width="13"><input type="checkbox" class="checkbox" /></th>
-				    <th>Name</th>
+				    <th><!--photo--></th>
+					<th>Name</th>
 				    <th>Email</th>
 				    <th>Office hours</th>
 				    <th>Phone</th>
-				    <th>Role</th>
 				    <% if is_admin %>
 						<th>User</th>
 					<% end %>
@@ -37,19 +37,18 @@
 				<% @teachers.each do |teacher| %>
 				  <tr>
 					<td><input type="checkbox" class="checkbox" /></td>
-			    	<td><%= teacher.first%>
-						<%= teacher.last %></td>
+			    	<td><%= image_tag teacher.photo.url(:thumb) %></td>
+					<td><%= Teacher::GetTitleFromValue(teacher.title) + " " + teacher.last + ", " + teacher.first %></td>
 				    <td><%= teacher.email %></td>
 				    <td><%= teacher.office_hours %></td>
 				    <td><%= teacher.phone %></td>
-				    <td><%= teacher.instructor_type %></td>
 					<!--will show usernames to which teachers belong to for admin user -->
 					<% if is_admin %>
 						<td><%= teacher.user.name if teacher.user %></td>
 					<% end %>
 				    <td><%= link_to 'Show', teacher %></td>
-				    <td><%= link_to 'Edit', edit_teacher_path(teacher), :class => 'ico edit' %></td>
-				    <td><%= link_to 'Destroy', teacher, confirm: 'Are you sure?', method: :delete, :class => 'delete_from_index ico del', :remote => true %></td>
+				    <td><%= link_to '', edit_teacher_path(teacher), :class => 'ico edit' %></td>
+				    <td><%= link_to '', teacher, confirm: 'Are you sure?', method: :delete, :class => 'delete_from_index ico del', :remote => true %></td>
 				  </tr>
 				<% end if @teachers %>
 			</table>
