@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120420133033) do
+ActiveRecord::Schema.define(:version => 20120420191847) do
 
   create_table "assignments", :force => true do |t|
     t.string   "name"
@@ -77,10 +77,10 @@ ActiveRecord::Schema.define(:version => 20120420133033) do
     t.datetime "updated_at",         :null => false
     t.integer  "title"
     t.string   "first"
+    t.datetime "photo_updated_at"
     t.string   "photo_file_name"
     t.string   "photo_content_type"
     t.integer  "photo_file_size"
-    t.datetime "photo_updated_at"
   end
 
   create_table "universities", :force => true do |t|

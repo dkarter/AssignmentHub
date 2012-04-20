@@ -22,3 +22,7 @@
 /db/.DS_Store
 .DS_Store
 /AssignmentHub/.DS_Store
+
+
+# never commit instructor photos to the source control !
+/AssignmentHub/public/system/teachers/photos
