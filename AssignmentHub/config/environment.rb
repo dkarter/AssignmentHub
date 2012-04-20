@@ -12,13 +12,13 @@ COURSE_COLORS = { 1 => "#ff6600",
                   5 => "#000000" 
                 }.freeze
 
-# Configure our mailer (currently causes some problems)
-#ActionMailer::Base.delivery_method = :smtp
-#ActionMailer::Base.server_settings = {
-#    :address => "localhost",
-#    :port => 25,
-#    :domain => "localhost",
-#    :user_name => "AssignmentHub",
-#    :password => "rocktheparty",
-#    :authentication => :login
-#}
+# Configure our mailer
+ActionMailer::Base.delivery_method = :smtp
+ActionMailer::Base.smtp_settings = {
+    :address => "smtp.sendgrid.net",
+    :port => 25,
+    :domain => "assignmenthub.herokuapp.com",
+    :user_name => "app4054156@heroku.com",
+    :password => "u40vubwf",
+    :authentication => :plain
+}
