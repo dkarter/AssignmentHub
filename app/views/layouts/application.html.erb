@@ -63,6 +63,11 @@
 		
 		<!-- Main Nav -->
 		<div id="navigation">
+            <%
+               if current_user
+                   @curr = User.find(current_user)
+                   if @curr.user_type == 0
+            %>
 			<ul>
 			    <li><a href="/dashboard" class="active"><span>Dashboard</span></a></li>
 			    <li><a href="/courses"><span>Courses</span></a></li>
@@ -71,9 +76,21 @@
 			    <li><a href="/attachments"><span>Attachments</span></a></li>
 				<li><a href="/teachers"><span>Instructors</span></a></li>
 			</ul>
+
+                   <% else %>
+
+              <ul>
+			    <li><a href="/dashboard" class="active"><span>Dashboard</span></a></li>
+			    <li><a href="/courses"><span>Courses</span></a></li>
+			    <li><a href="/assignments"><span>Assignments</span></a></li>
+			    <li><a href="/attachments"><span>Attachments</span></a></li>
+				<li><a href="/teachers"><span>Instructors</span></a></li>
+			</ul>
+                  <% end %>
+            <% else %>
+            <% end %>
 		</div>
-		<!-- End Main Nav -->
-	</div>
+		<!-- End Main Nav --></div>
 </div>
 <!-- End Header -->
 
@@ -91,7 +108,7 @@
 		
 		<!-- Message OK -->		
 		<div class="msg msg-ok hidden">
-			<p><strong>Your file was uploaded succesifully!</strong></p>
+			<p><strong>Your file was uploaded successfully!</strong></p>
 			<a href="#" class="close">close</a>
 		</div>
 		<!-- End Message OK -->		

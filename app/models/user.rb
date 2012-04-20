@@ -20,7 +20,7 @@ class User < ActiveRecord::Base
 
   def self.authenticate(name, pass)
     user = find_by_name(name)
-    if User.encrypt(pass, user.pass_salt) == user.password
+    if user && User.encrypt(pass, user.pass_salt) == user.password
       user
     else
       nil

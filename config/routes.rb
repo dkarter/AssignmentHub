@@ -6,7 +6,8 @@ AssignmentHub::Application.routes.draw do
   get "sign_up" => "users#new", :as => "sign_up"
   get "forgot_password" => "password_resets#new", :as => "forgot_password"
   get "course_search" => "courses#search", :as => "course_search"
-  root :to => "users#index"
+  #root :to => "users#index"
+  root :to => "users#new", :as => "sign_up"
 
   resources :teachers
 
