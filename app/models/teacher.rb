@@ -1,12 +1,16 @@
 class Teacher < ActiveRecord::Base
   has_and_belongs_to_many :courses
   
-  validates_presence_of :first, :last, :email
+  validates_presence_of :first, :last
   validates_length_of :first, :last, :maximum => 15, :message => "less than 15 characters please"
   validates_length_of :email, :maximum => 25, :message => "less than 25 characters please"
   validates_length_of :office_hours, :maximum => 50, :message => "less than 50 characters please"
   validates_format_of :email, :with => /^([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})$/i, :message => "Invalid email"
-  validates_uniqueness_of :email
+  
+  # i wouldn't do that.. what if two users create the same professor record?
+  # we need to make the record belong to user
+  #validates_uniqueness_of :email
+  
   
   
   TITLETYPE = [['Prof.', '4'],
