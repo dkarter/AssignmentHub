@@ -1,13 +1,68 @@
-<h1>Log in</h1>
+<!-- Content -->
+<div id="content">
 
-<%= form_tag sessions_path do %>
-    <p>
-      <%= label_tag :name %><br />
-      <%= text_field_tag :name, params[:name] %>
-    </p>
-    <p>
-      <%= label_tag :password %><br />
-      <%= password_field_tag :password %>
-    </p>
-    <p class="button"><%= submit_tag "Log in" %></p>
-<% end %>
+	<!-- Box -->
+	<div class="box">
+		<!-- Box Head -->
+		<div class="box-head">
+			<h2>Log in</h2>
+		</div>
+		<!-- End Box Head -->
+			
+			<%= form_tag sessions_path do %>
+		
+			<!-- Form -->
+			<div class="form">
+
+					<p>
+						<%= label_tag :name, "Username" %>
+						<%= text_field_tag :name, params[:name] %>
+					</p>
+					<p>
+						<%= label_tag :password %>
+						<%= password_field_tag :password %>
+					</p>
+						
+			
+			</div>
+			<!-- End Form -->
+		
+			<!-- Form Buttons -->
+			<div class="buttons">
+				<%= submit_tag "Log in" %>
+			</div>
+			<!-- End Form Buttons -->
+			
+			<% end %>
+			
+	</div>
+	<!-- End Box -->
+
+	
+
+</div>
+<!-- End Content -->
+
+<!-- Sidebar -->
+<div id="sidebar">
+	
+	<!-- Box -->
+	<div class="box">
+		
+		<!-- Box Head -->
+		<div class="box-head">
+			<h2>Management</h2>
+		</div>
+		<!-- End Box Head-->
+		
+		<div class="box-content">
+			<%= link_to 'Register', new_user_path, :class => 'silverCss3Button' %>
+			<div class="cl">&nbsp;</div>
+			
+			
+			
+		</div>
+	</div>
+	<!-- End Box -->
+</div>
+<!-- End Sidebar -->
