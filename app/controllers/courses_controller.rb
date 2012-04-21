@@ -14,8 +14,8 @@ class CoursesController < ApplicationController
       elsif current_user && User.find(current_user).user_type == 0
         @courses = Course.all
       else
-        @courses = nil
         redirect_to sign_up_path and return
+        @courses = nil
       end
     #end
     
