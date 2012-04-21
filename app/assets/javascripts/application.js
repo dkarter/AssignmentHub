@@ -29,7 +29,9 @@ $(document).ready(function() {
 	});
 	
 	//date picker
-	$('input[name*="date"]').datepicker();
+	 $('input[name*="date"]').datetimepicker({
+         ampm: true
+      });
 	
 });
 
