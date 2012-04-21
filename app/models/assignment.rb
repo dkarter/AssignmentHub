@@ -7,11 +7,10 @@ class Assignment < ActiveRecord::Base
   def schedule_notification()
     #course = self.course
     #user = course.user.name
-    course = Course.new(:name => "Test Course")
     user = User.new(:name => "Bob", :password => "password", :first => "Bob", :last => "Bobber", :email => "nephanim@gmail.com")
     assignment = self.name
     due = self.due_date - 1.days
-    Notifications.delay.deliver_notification(user.email, user.name, course.name, assignment.name, due)
+    Notifications.delay.deliver_notification(user.email, user.name, "Test Course", assignment.name, due)
   end
 
 end
