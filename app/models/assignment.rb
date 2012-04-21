@@ -11,7 +11,7 @@ class Assignment < ActiveRecord::Base
       user = User.new(:name => "Bob", :password => "password", :first => "Bob", :last => "Bobber", :email => "nephanim@gmail.com")
       assignment = self.name
       due = self.due_date - 1.days
-      Notifications.send_later(:deliver_notification, user, course, assignment, due)
+      Notifications.delay.deliver_notification(user.name, course.name, assignment.name, due)
     end
   end
 
