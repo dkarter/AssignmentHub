@@ -11,17 +11,17 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120420191847) do
+ActiveRecord::Schema.define(:version => 20120421014504) do
 
   create_table "assignments", :force => true do |t|
     t.string   "name"
     t.string   "assignment_type"
-    t.string   "start_date"
-    t.string   "due_date"
+    t.datetime "start_date",      :limit => 255
+    t.datetime "due_date",        :limit => 255
     t.integer  "priority"
     t.text     "notes"
-    t.datetime "created_at",      :null => false
-    t.datetime "updated_at",      :null => false
+    t.datetime "created_at",                     :null => false
+    t.datetime "updated_at",                     :null => false
     t.integer  "course_id"
   end
 
