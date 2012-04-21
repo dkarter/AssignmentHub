@@ -5,7 +5,7 @@ AssignmentHub::Application.routes.draw do
   get "log_in" => "sessions#new", :as => "log_in"
   get "sign_up" => "users#new", :as => "sign_up"
   get "forgot_password" => "password_resets#new", :as => "forgot_password"
-  get "send_reminder" => "reminder#new", :as => "remind_me"
+  get "reminder" => "reminders#new", :as => "remind_me"
   get "course_search" => "courses#search", :as => "course_search"
   root :to => "courses#index", :as => "courses"
 
@@ -23,6 +23,7 @@ AssignmentHub::Application.routes.draw do
   resources :users
   resources :sessions
   resources :password_resets
+  resources :reminders
   
   # The priority is based upon order of creation:
   # first created -> highest priority.

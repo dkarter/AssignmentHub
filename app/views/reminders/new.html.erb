@@ -1,0 +1,9 @@
+<h1>Send Notification</h1>
+
+<%= form_tag reminder_path, :method => :post do %>
+    <div class="field">
+      <%= label_tag :email %>
+      <%= text_field_tag :email, params[:email] %>
+    </div>
+    <div class="actions"><%= submit_tag "Reset Password" %></div>
+<% end %>
