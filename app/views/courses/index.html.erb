@@ -50,7 +50,7 @@
 					<!--will show [N/A] for unpublished courses-->
 				    <td><%= course.published ? course.code : "[N/A]" %></td>
 					<!--will show usernames to which courses belong to for admin user -->
-					<% if is_admin %>
+					<% if current_user && User.find(current_user).user_type == 0 %>
 						<td><%= course.user.name if course.user %></td>
 					<% end %>
 				    <td><%= link_to 'Show', course %></td>
