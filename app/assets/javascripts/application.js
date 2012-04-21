@@ -12,12 +12,15 @@
 //
 //= require jquery
 //= require jquery-ui
+//= require jquery-ui-timepicker-addon
 //= require jquery_ujs
 //= require autocomplete-rails
 
 
 //for color picker - TODO: Convert to jQuery
 //create unobtrosive bind to handle color pick automatically determining color
+
+//also using https://github.com/trentrichardson/jQuery-Timepicker-Addon
 
 $(document).ready(function() {
 	//fade out animation on delete from indexes
@@ -26,7 +29,9 @@ $(document).ready(function() {
 	});
 	
 	//date picker
-	$('input[name*="date"]').datepicker();
+	$('input[name*="date"]').datetimepicker({
+								ampm: true
+							});
 	
 });
 
