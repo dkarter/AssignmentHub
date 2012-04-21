@@ -1,15 +1,17 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
 
 one:
-  name: MyString
+  first: MyString
+  last: MyString
   email: MyString
   office_hours: MyString
   phone: MyString
-  type: 
+  instructor_type:
 
 two:
-  name: MyString
+  first: MyString
+  last: MyString
   email: MyString
   office_hours: MyString
   phone: MyString
-  type: 
+  instructor_type:

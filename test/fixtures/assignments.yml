@@ -2,7 +2,7 @@
 
 one:
   name: MyString
-  type: 
+  assignment_type:
   start_date: MyString
   due_date: MyString
   priority: 
@@ -10,7 +10,7 @@ one:
 
 two:
   name: MyString
-  type: 
+  assignment_type:
   start_date: MyString
   due_date: MyString
   priority: 
