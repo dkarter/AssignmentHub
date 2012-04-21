@@ -5,14 +5,13 @@ class Assignment < ActiveRecord::Base
   validates_length_of :name, :maximum => 15, :message => "less than 15 characters please"
 
   def schedule_notification()
-    course = self.course
+    #course = self.course
     #user = course.user.name
-    if course
-      user = User.new(:name => "Bob", :password => "password", :first => "Bob", :last => "Bobber", :email => "nephanim@gmail.com")
-      assignment = self.name
-      due = self.due_date - 1.days
-      Notifications.delay.deliver_notification(user.email, user.name, course.name, assignment.name, due)
-    end
+    course = Course.new(:name => "Test Course")
+    user = User.new(:name => "Bob", :password => "password", :first => "Bob", :last => "Bobber", :email => "nephanim@gmail.com")
+    assignment = self.name
+    due = self.due_date - 1.days
+    Notifications.delay.deliver_notification(user.email, user.name, course.name, assignment.name, due)
   end
 
 end
