@@ -6,6 +6,7 @@ gem 'rails', '3.2.1'
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
 gem 'paperclip'
+gem 'delayed_job_active_record'
 
 group :development, :test do
   gem 'sqlite3'

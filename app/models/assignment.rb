@@ -6,10 +6,13 @@ class Assignment < ActiveRecord::Base
 
   def schedule_notification()
     course = self.course
-    user = course.user.name
-    assignment = self.name
-    due = self.due_date
-    NotificationMailer.send_at(due - 1.day, :deliver_notification, user, course, assignment, due)
+    #user = course.user.name
+    if course
+      user = User.new(:name => "Bob", :password => "password", :first => "Bob", :last => "Bobber", :email => "nephanim@gmail.com")
+      assignment = self.name
+      due = self.due_date - 1.days
+      Notifications.send_later(:deliver_notification, user, course, assignment, due)
+    end
   end
 
 end
