@@ -1,5 +1,6 @@
 class Assignment < ActiveRecord::Base
   belongs_to :course
+  belongs_to :user
   
   validates_presence_of :name, :message => "must provide basic information"
   validates_length_of :name, :maximum => 15, :message => "less than 15 characters please"

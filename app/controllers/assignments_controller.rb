@@ -41,7 +41,10 @@ class AssignmentsController < ApplicationController
   # POST /assignments.json
   def create
     @assignment = Assignment.new(params[:assignment])
-
+    
+    # set current user as the creator of the assignment 
+    @assignment.user = User.find(current_user)
+    
     respond_to do |format|
       if @assignment.save
         format.html { redirect_to @assignment, notice: 'Assignment was successfully created.' }
