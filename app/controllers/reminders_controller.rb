@@ -4,7 +4,7 @@ class RemindersController < ApplicationController
   end
 
   def create
-    assignment = Assignment.find(params[:id])
+    assignment = Assignment.find_by_name(params[:name])
     assignment.schedule_notification() if assignment
     redirect_to "/", :notice => "A reminder email will be sent 24 hours in advance!"
   end

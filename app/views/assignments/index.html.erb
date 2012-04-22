@@ -48,7 +48,7 @@
 						<td><%= assignment.course.user.name if assignment.course %></td>
 					<% end %>
 				    <td><%= link_to 'Edit', edit_assignment_path(assignment), :class => 'ico edit' %></td>
-                    <td><%= link_to 'Remind Me', assignment.schedule_notification() %></td>
+                    <td><%= link_to 'Remind Me', {:controller => "reminders", :action => "index"}, :method => :post, confirm: 'Are you sure?' %></td>
 				    <td><%= link_to 'Destroy', assignment, confirm: 'Are you sure?', method: :delete, :class => 'delete_from_index ico del', :remote => true %></td>
 				  </tr>
 				<% end if @assignments %>
