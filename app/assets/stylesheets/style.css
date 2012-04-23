@@ -660,3 +660,32 @@ left: -5px;
 .prof_thumb {
 	border:#AC3722 solid 1px;
 }
+
+/* three column dl */
+.three-col {
+       -moz-column-count: 3;
+       -moz-column-gap: 20px;
+       -webkit-column-count: 3;
+       -webkit-column-gap: 20px;
+}
+
+/* course index at top of dashboard */
+.course_index {
+	width: 100%;
+}
+
+.course_index li {
+	display: inline;
+	list-style-type: none;
+	margin-right: 15px;
+}
+
+.course_index .course-name {
+	position: relative;
+	top: -6px;
+}
+
+.course_index .course-color-index {
+	display: inline-block;
+	margin: 0px;
+}

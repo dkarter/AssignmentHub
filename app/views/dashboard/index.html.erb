@@ -1,2 +1,23 @@
 <div id="loading" class="hidden">Loading</div>
+
+<div class="course_index">
+	<% @courses.each do |course| %>
+	<li>
+		<div class="course-color-index" style="background: #<%= course.color %>"></div>
+		<span class="course-name"><%= course.name %></span>
+	</li>
+	<% end %>
+</div>
+<br />
+
 <div id="dashboard-calendar"></div>
+
+<br />
+<div class="course_index">
+	<% @courses.each do |course| %>
+	<li>
+		<div class="course-color-index" style="background: #<%= course.color %>"></div>
+		<span class="course-name"><%= course.name %></span>
+	</li>
+	<% end %>
+</div>
