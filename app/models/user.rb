@@ -1,3 +1,23 @@
+# * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+#AssignmentHub - My School Organizer on the Cloud
+# * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+#Copyright (C) 2012 Dorian Karter, Joseph Low, Amar Rana, Chinonso Enwerem
+# * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+#Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated
+#documentation files (the "Software"), to deal in the Software without restriction, including without limitation
+#the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and
+#to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+#
+#The above copyright notice and this permission notice shall be included in all copies or substantial portions
+#of the Software.
+#
+#THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED
+#TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
+#THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF
+#CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
+#DEALINGS IN THE SOFTWARE.
+# * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+
 require 'digest/sha1'
 
 class User < ActiveRecord::Base
@@ -6,7 +26,6 @@ class User < ActiveRecord::Base
   # Validation of various parameters. Important: require valid email format, unique username
 
   before_create :encrypt_password
-  before_update :encrypt_password
 
   validates_length_of :name, :within => 3..15
   validates_length_of :password, :within => 5..40
@@ -21,7 +40,7 @@ class User < ActiveRecord::Base
 
   def self.authenticate(name, pass)
     user = find_by_name(name)
-    if user && User.encrypt(pass, user.pass_salt) == user.password
+    if User.encrypt(pass, user.pass_salt) == user.password
       user
     else
       nil
@@ -51,7 +70,7 @@ class User < ActiveRecord::Base
       new_pass = User.random_string(10)
       user.encrypt_given_password(new_pass)
       user.save
-      Notifications.forgot_password(self.email, self.name, new_pass, self.password).deliver
+      Notifications.forgot_password(self.email, self.name, new_pass).deliver
       end
   end
 
