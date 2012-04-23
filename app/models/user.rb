@@ -6,6 +6,7 @@ class User < ActiveRecord::Base
   # Validation of various parameters. Important: require valid email format, unique username
 
   before_create :encrypt_password
+  before_update :encrypt_password
 
   validates_length_of :name, :within => 3..15
   validates_length_of :password, :within => 5..40
