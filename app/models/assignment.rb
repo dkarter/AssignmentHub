@@ -1,5 +1,5 @@
 class Assignment < ActiveRecord::Base
-  belongs_to :course, :user
+  belongs_to :course
 
   before_create :schedule_notification
   
@@ -8,8 +8,9 @@ class Assignment < ActiveRecord::Base
 
   def schedule_notification()
     name = self.name
-    owner = self.user.name
-    email = self.user.email
+    @user = User.find(current_user)
+    owner = @user.name
+    email = @user.email
     due = self.due_date
     remind_time = due - 1.day
     #course = self.course
