@@ -20,7 +20,12 @@ class Teacher < ActiveRecord::Base
   ['Mr.', '0']]
 
   
-  has_attached_file :photo, :styles => {:large => "300x300>", :small => "150x150>", :thumb => "57x75#"}          
+  has_attached_file :photo, 
+                    :default_url => "/assets/NA_:style.jpg", 
+                    :styles => {:large => "300x300>", 
+                                :small => "150x150>", 
+                                :thumb => "57x75#"}
+                                                  
   
   
   def self.GetTitleFromValue(value)

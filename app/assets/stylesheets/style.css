@@ -655,3 +655,8 @@ left: -5px;
 	height:20px;
 	border: 1px #848484 solid;
 }
+
+/* prof index thumb */
+.prof_thumb {
+	border:#AC3722 solid 1px;
+}

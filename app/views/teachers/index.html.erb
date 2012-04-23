@@ -36,7 +36,7 @@
 				<% @teachers.each do |teacher| %>
 				  <tr>
 					<td><input type="checkbox" class="checkbox" /></td>
-			    	<td><%= image_tag teacher.photo.url(:thumb) %></td>
+			    	<td><%= image_tag teacher.photo.url(:thumb), :class => "prof_thumb" %></td>
 					<td><%= link_to (Teacher::GetTitleFromValue(teacher.title) + " " + teacher.last + ", " + teacher.first), teacher %></td>
 				    <td><%= teacher.email %></td>
 				    <td><%= teacher.office_hours %></td>

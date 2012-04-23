@@ -12,7 +12,7 @@
 
 <p>
   <b>Email:</b>
-  <%= @teacher.email %>
+  <%= mail_to @teacher.email, @teacher.email %>
 </p>
 
 <p>
@@ -26,8 +26,12 @@
 </p>
 
 <p>
-  <b>Courses:</b>
-	TODO: generate a list of courses associated with this instructor and his/her role in it
+  <b>Courses:</b><br />
+	<dl>
+		<% for course in @teacher.courses %>
+			<li><%= course.course_number + " - " + course.name %></li>
+		<% end %>
+	</dl>
 </p>
 
 
