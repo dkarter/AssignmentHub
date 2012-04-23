@@ -35,6 +35,7 @@ class User < ActiveRecord::Base
   def encrypt_password()
     self.pass_salt = User.random_string(10) if !self.pass_salt
     self.password = User.encrypt(self.password, self.pass_salt)
+    self.save
   end
 
   def encrypt_given_password(password)
@@ -43,6 +44,7 @@ class User < ActiveRecord::Base
     end
     self.password = password
     self.password = self.password_confirmation = User.encrypt(password, self.pass_salt)
+    self.save
   end
 
   def forgot_password(name, email)
@@ -50,7 +52,6 @@ class User < ActiveRecord::Base
     if user.email == email
       new_pass = User.random_string(10)
       user.encrypt_given_password(new_pass)
-      user.save
       Notifications.forgot_password(self.email, self.name, new_pass).deliver
       end
   end
