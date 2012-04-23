@@ -17,7 +17,7 @@ class AssignmentsController < ApplicationController
 
     respond_to do |format|
       format.html # show.html.erb
-      format.json { render json: @assignment }
+      format.json { render json: @assignment.to_json }
     end
   end
 

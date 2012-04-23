@@ -15,6 +15,7 @@
 //= require jquery-ui-timepicker-addon
 //= require jquery_ujs
 //= require autocomplete-rails
+//= require jquery.rest
 
 
 //for color picker - TODO: Convert to jQuery
