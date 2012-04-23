@@ -50,6 +50,8 @@ AssignmentHub::Application.configure do
   config.assets.precompile += %w( autocomplete-rails.js )
   config.assets.precompile += %w( jquery-ui.css )
   config.assets.precompile += %w( style.css )
+  config.assets.precompile += %w( jquery-ui-timepicker-addon.css )
+  config.assets.precompile += %w( jquery-ui-timepicker-addon.js)
 
   # Disable delivery errors, bad email addresses will be ignored
   # config.action_mailer.raise_delivery_errors = false

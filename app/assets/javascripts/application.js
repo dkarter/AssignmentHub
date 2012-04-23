@@ -30,9 +30,9 @@ $(document).ready(function() {
 	});
 	
 	//date picker
-	$('input[name*="date"]').datetimepicker({
-								ampm: true
-							});
+	 $('input[name*="date"]').datetimepicker({
+         ampm: true
+      });
 	
 });
 

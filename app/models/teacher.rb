@@ -3,7 +3,7 @@ class Teacher < ActiveRecord::Base
   
   validates_presence_of :first, :last
   validates_length_of :first, :last, :maximum => 15, :message => "less than 15 characters please"
-  validates_length_of :email, :maximum => 25, :message => "less than 25 characters please"
+  validates_length_of :email, :maximum => 40, :message => "less than 40 characters please"
   validates_length_of :office_hours, :maximum => 50, :message => "less than 50 characters please"
   validates_format_of :email, :with => /^([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})$/i, :message => "Invalid email"
   

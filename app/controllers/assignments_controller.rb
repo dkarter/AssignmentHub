@@ -32,6 +32,14 @@ class AssignmentsController < ApplicationController
     end
   end
 
+  def schedule_notification
+    if request.post? and params[:assignment]
+      @assignment = Assignment.new(params[:assignment])
+      assignment = Assignment.find_by_name(@assignment.name)
+      flash[:notice] = "Received assignment!"
+    end
+  end
+
   # GET /assignments/1/edit
   def edit
     @assignment = Assignment.find(params[:id])

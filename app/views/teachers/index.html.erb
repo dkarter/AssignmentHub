@@ -43,7 +43,7 @@
 				    <td><%= teacher.phone %></td>
 					<!--will show usernames to which teachers belong to for admin user -->
 					<% if is_admin %>
-						<td><%= teacher.user.name if teacher.user %></td>
+						<td><%= teacher.course.user.name if teacher.course %></td>
 					<% end %>
 				    <td><%= link_to '', edit_teacher_path(teacher), :class => 'ico edit' %></td>
 				    <td><%= link_to '', teacher, confirm: 'Are you sure?', method: :delete, :class => 'delete_from_index ico del', :remote => true %></td>

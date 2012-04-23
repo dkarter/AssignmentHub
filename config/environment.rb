@@ -13,12 +13,12 @@ COURSE_COLORS = { 1 => "#ff6600",
                 }.freeze
 
 # Configure our mailer
-ActionMailer::Base.delivery_method = :smtp
-ActionMailer::Base.smtp_settings = {
-    :address => "smtp.sendgrid.net",
-    :port => 25,
-    :domain => "assignmenthub.herokuapp.com",
-    :user_name => "app4054156@heroku.com",
-    :password => "u40vubwf",
-    :authentication => :plain
-}
+  ActionMailer::Base.delivery_method = :smtp
+  ActionMailer::Base.smtp_settings = {
+     :address => "smtp.sendgrid.net",
+     :port => 25,
+     :domain => "assignmenthub.herokuapp.com",
+     :user_name => "app4054156@heroku.com",
+     :password => "u40vubwf",
+     :authentication => :plain
+     }

@@ -10,11 +10,17 @@ class Assignment < ActiveRecord::Base
   validates_length_of :name, :maximum => 15, :message => "less than 15 characters please"
 
   def schedule_notification()
-    course = self.course
-    user = course.user.name
-    assignment = self.name
-    due = self.due_date
-    NotificationMailer.send_at(due - 1.day, :deliver_notification, user, course, assignment, due)
+    @assignment = self
+    #course = self.course
+    #user = course.user.name
+    #user = User.new(:name => "Bob", :password => "password", :first => "Bob", :last => "Bobber", :email => "nephanim@gmail.com")
+    #email = "nephanim@gmail.com"
+    #name = "Nephanim"
+    #assignment = "Assignment"
+    #course = "Test Course"
+    #due = "tomorrow"
+    #Notifications.deliver_notification(email, name, course, assignment, due)
+    Notifications.deliver_notification("nephanim@gmail.com", "Nephanim", "Test Course", "Test Assignment", "tomorrow").deliver
   end
 
   # need to override the json view to return what full_calendar is expecting.
