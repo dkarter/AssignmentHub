@@ -45,11 +45,12 @@ class UserTest < ActiveSupport::TestCase
    end
 
   test "should be able to encrypt a given password" do
-    user = User.new(:name => 'tester', :password => 'password', :first => 'first', :last => 'last', :email => 'figs@pickles.com', :user_type => 0)
-    user.save
+    @user = User.new(:name => 'tester', :password => 'password', :first => 'first', :last => 'last', :email => 'figs@pickles.com', :user_type => 0)
+    @user.save
     assert User.authenticate('tester','password'), "Couldn't log in with original password"
-    user.encrypt_given_password('newpass')
-    assert user.save, "Couldn't save user with new password"
+    @user.encrypt_given_password('newpass')
+    assert @user.save, "Couldn't save user with new password"
+    assert User.encrypt('newpass', @user.pass_salt) == @user.password, "Encryption check failed"
     assert !User.authenticate('tester','password'), "Authenticated with wrong password! (old)"
     assert User.authenticate('tester','newpass'), "Couldn't log in"
   end
