@@ -27,7 +27,8 @@
 
 <p>
   <b>Notes:</b><br />
-  <%= @assignment.notes %>
+	<!-- Making sure no injection + maintaining format -->
+  <%= simple_format(@assignment.notes.gsub(/\r\n/, '<br />')) %>
 </p>
 
 

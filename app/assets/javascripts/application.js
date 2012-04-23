@@ -25,6 +25,7 @@
 
 //also using https://github.com/trentrichardson/jQuery-Timepicker-Addon
 
+
 $(document).ready(function() {
 	//fade out animation on delete from indexes
 	$('.delete_from_index').bind('ajax:success', function() {
@@ -35,6 +36,8 @@ $(document).ready(function() {
 	 $('input[name*="date"]').datetimepicker({
          ampm: true
       });
+
+
 
 	// all day schedule disables time pickers
 	$('#assignment_all_day').click(function() {
@@ -105,3 +108,5 @@ function add_fields(link, association, content) {
 function field_disabled (field, disabled) {
 	$(field).prop('disabled', disabled);
 }
+
+

@@ -41,12 +41,13 @@ class Assignment < ActiveRecord::Base
     {
       :id => self.id,
       :title => self.name,
-      :description => self.notes || "",
       :start => self.start_date,
       :end => self.due_date,
       :allDay => self.all_day,
       :recurring => false,
+      :color => (self.course ? '#' + self.course.color : ''),
       :url => Rails.application.routes.url_helpers.assignment_path(id)
+      
     }
     
   end

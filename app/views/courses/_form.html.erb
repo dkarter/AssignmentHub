@@ -1,3 +1,7 @@
+<%= stylesheet_link_tag "colorpicker", :media => "all" %>
+<%= javascript_include_tag "colorpicker" %>
+<%= javascript_include_tag "colorpicker-setup" %>
+
 <!-- Content -->
 <div id="content">
 	<%= form_for(@course, :remote => true, :builder => ApplicationHelper::ColorPickerFormBuilder) do |f| %>
@@ -33,8 +37,12 @@
 			<div class="form">
 			  <p>
 				<%= f.label :color %>
-				<%= f.color_picker :color, :avaiable => COURSE_COLORS, :selected=> @course.color %>
-				<br />
+				<%= f.hidden_field :color %>
+				<div id="customWidget">
+					<div id="colorSelector"><div style="background-color: <%= @course.color ? '#' + @course.color : '#0066ff'%>"></div></div>
+	                <div id="colorpickerHolder">
+	                </div>
+				</div>
 			  </p>
 			  <p>
 				<span class="req">(Required, max 100 symbols)</span>
@@ -62,7 +70,7 @@
 				<p><%= link_to_add_fields "Add Instructor", f, :teachers %></p>
 			  </p>
 			  <p>
-			    <%= f.label :published %>
+			    <%= f.label :published, "Publish?" %>
 				<%= f.check_box :published %>
 			  </p>
 			  

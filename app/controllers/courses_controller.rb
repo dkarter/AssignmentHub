@@ -40,7 +40,9 @@ class CoursesController < ApplicationController
   # GET /courses/new.json
   def new
     @course = Course.new
+    @course.color = get_random_color
     @last_school_used = last_school_used
+    
     #2.times { @course.teachers.build }
     
     respond_to do |format|

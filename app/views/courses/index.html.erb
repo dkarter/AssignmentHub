@@ -41,7 +41,7 @@
 				<% @courses.each do |course| %>
 				  <tr>
 					<td><input type="checkbox" class="checkbox" /></td>
-					<td><div style="display: block; background:#<%= course.color%>; width:20px; height:20px;" /></td>
+					<td><div class="course-color-index" style="background:#<%= course.color %>;" /></td>
 				    <td><%=link_to course.name, course %></td>
 				    <td><%= course.course_number %></td>
 				    <td><%= course.school %></td>
@@ -52,8 +52,8 @@
 					<% if current_user && User.find(current_user).user_type == 0 %>
 						<td><%= course.user.name if course.user %></td>
 					<% end %>
-				    <td><%= link_to 'Edit', edit_course_path(course), :class => 'ico edit' %></td>
-				    <td><%= link_to 'Destroy', course, confirm: 'Are you sure?', method: :delete, :class => 'delete_from_index ico del', :remote => true %></td>
+				    <td><%= link_to '', edit_course_path(course), :class => 'ico edit' %></td>
+				    <td><%= link_to '', course, confirm: 'Are you sure?', method: :delete, :class => 'delete_from_index ico del', :remote => true %></td>
 				  </tr>
 				<% end if @courses %>
 			</table>
