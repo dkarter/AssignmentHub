@@ -97,13 +97,13 @@ $(document).ready(function() {
 		},
 		
 		//http://arshaw.com/fullcalendar/docs/event_ui/eventDrop/
-        eventDrop: function(event, dayDelta, minuteDelta, allDay, revertFunc){
-            updateEvent(event);
+        eventDrop: function(assignment, dayDelta, minuteDelta, allDay, revertFunc){
+            update_assignment(assignment, allDay);
         },
 
         // http://arshaw.com/fullcalendar/docs/event_ui/eventResize/
-        eventResize: function(event, dayDelta, minuteDelta, revertFunc){
-            updateEvent(event);
+        eventResize: function(assignment, dayDelta, minuteDelta, revertFunc){
+            update_assignment(assignment, null);
         }
 		
 
@@ -142,17 +142,60 @@ function position_footer() {
 	}
 }
 
-function updateEvent(assignment) {
-   	alert(assignment.start);
-	alert(assignment.end);
+function update_assignment(assignment, allday) {
+   	
+	var assignment_data;
+	
+	if (allday != null)
+		assignment_data = { assignment: { 
+										   name: assignment.title,
+                						   start_date: format_dt(assignment.start),
+                						   due_date: format_dt(assignment.end),
+ 										   all_day: allday
+										} 
+				}, function (reponse) { 
+						//alert('successfully updated task.'); 
+				};
+	else
+		assignment_data = { assignment: { 
+										  name: assignment.title,
+            							  start_date: "" + format_dt(assignment.start),
+            							  due_date: "" + format_dt(assignment.end) 
+										}
+			}, function (reponse) { 
+				//alert('successfully updated task.'); 
+			};
+	
+	// call update via RESTful call submitting the json command above
+	$.update("/assignments/" + assignment.id, assignment_data);
+	
+}
+
+function create_assignment (assignment) {
 	$.update(
-     "/assignments/" + assignment.id,
+     "/assignments/new",
      { assignment: { name: assignment.title,
                 start_date: "" + assignment.start,
                 due_date: "" + assignment.end }
      }, 
 		function (reponse) { 
-			//alert('successfully updated task.'); 
+			alert('successfully created task.'); 
 		}
     );
+}
+
+function format_dt (dt) {
+	return $.datepicker.formatDate("D M dd yy", dt) + " " + format_time(dt);
+}
+
+function format_time (dt) {
+	var hh = dt.getHours()
+	var mm = dt.getMinutes()
+
+	 if (mm < 10)
+	 	mm = "0" + mm
+	 if (hh < 10)
+	  	hh = "0" + hh
+  
+	return hh + ":" + mm;
 }
