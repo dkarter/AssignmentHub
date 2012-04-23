@@ -8,6 +8,8 @@ class Assignment < ActiveRecord::Base
 
   def schedule_notification()
     name = self.name
+    owner = self.user.name
+    email = self.user.email
     due = self.due_date
     remind_time = due - 1.day
     #course = self.course
@@ -19,7 +21,7 @@ class Assignment < ActiveRecord::Base
     #course = "Test Course"
     #due = "tomorrow"
     #Notifications.deliver_notification(email, name, course, assignment, due)
-    Notifications.delay(:run_at => remind_time).deliver_notification("nephanim@gmail.com", "Nephanim", "Test Course", name, due)
+    Notifications.delay(:run_at => remind_time).deliver_notification(email, owner, "Test Course", name, due)
   end
 
 end
