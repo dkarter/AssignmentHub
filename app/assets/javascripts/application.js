@@ -24,19 +24,25 @@
 //create unobtrosive bind to handle color pick automatically determining color
 
 //also using https://github.com/trentrichardson/jQuery-Timepicker-Addon
-
+var footerHeight = 0,
+    footerTop = 0;
 
 $(document).ready(function() {
 	//fade out animation on delete from indexes
 	$('.delete_from_index').bind('ajax:success', function() {
 			$(this).closest('tr').fadeOut();
 	});
-	
-	//date picker
-	 $('input[name*="date"]').datetimepicker({
-         ampm: true
-      });
 
+	//date picker
+	$('input[name*="date"]').datetimepicker({
+		ampm: true
+	});
+
+	// force footer to bottom on dashboard
+	if(window.location.href.indexOf("dashboard") > -1) {
+		$(window).scroll(function() {position_footer();});
+		$(window).resize(function() {position_footer();});
+	}
 
 
 	// all day schedule disables time pickers
@@ -109,4 +115,19 @@ function field_disabled (field, disabled) {
 	$(field).prop('disabled', disabled);
 }
 
+function position_footer() {	
+	$footer = $("#footer");
+	footerHeight = $footer.height();
+	footerTop = ($(window).scrollTop()+$(window).height()-footerHeight)+"px";
+
+	if (($(document.body).height()+footerHeight) < $(window).height()) {
+		$footer.css({
+             position: "absolute", top: footerTop
+        });
+	} else {
+		$footer.css({
+             position: "static"
+        })
+	}
+}
 
