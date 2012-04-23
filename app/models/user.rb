@@ -51,7 +51,7 @@ class User < ActiveRecord::Base
       new_pass = User.random_string(10)
       user.encrypt_given_password(new_pass)
       user.save
-      Notifications.forgot_password(self.email, self.name, new_pass, self.password).deliver
+      Notifications.forgot_password(self.email, self.name, new_pass).deliver
       end
   end
 
