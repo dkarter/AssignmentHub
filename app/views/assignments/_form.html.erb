@@ -37,9 +37,12 @@
 
 				<p>
 					<%= f.label :assignment_type %>
-				    <%= f.text_field :assignment_type %>
+				    <%= f.select :assignment_type, Assignment::ASSIGNMENTTYPE  %>
 				</p>
-				
+				<p>
+					<%= f.label :all_day %>
+			    	<%= f.check_box :all_day %>
+				</p>
 				<p>
 					<%= f.label :start_date %>
 			    	<%= f.datetime_select :start_date, :ampm => true %>

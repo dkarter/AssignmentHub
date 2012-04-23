@@ -369,6 +369,10 @@ background: #fff;
 padding: 5px;
 }
 
+.form p input[type="checkbox"] {
+	width: auto;
+}
+
 .size1 {
 width: 716px;
 }

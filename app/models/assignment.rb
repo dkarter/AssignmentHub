@@ -30,13 +30,20 @@ class Assignment < ActiveRecord::Base
       :id => self.id,
       :title => self.name,
       :description => self.notes || "",
-      :start => self.start_date.rfc822,
-      :end => self.due_date.rfc822,
+      :start => self.start_date,
+      :end => self.due_date,
       :allDay => self.all_day,
       :recurring => false,
       :url => Rails.application.routes.url_helpers.assignment_path(id)
     }
     
   end
+  
+  ASSIGNMENTTYPE = [['Midterm Exam', '0'],
+                    ['Final Exam', '1'],
+                    ['Paper', '2'],
+                    ['Project Deliverable', '3'],
+                    ['Final Project', '4'],
+                    ['Lab','5']]
 
 end
