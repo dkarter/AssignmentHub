@@ -3,3 +3,5 @@
 
 en:
   hello: "AssignmentHub"
+  forgot_password.subject: "AssignmentHub Support"
+  deliver_notification.subject: "AssignmentHub Reminder"

@@ -23,8 +23,8 @@ ActiveRecord::Schema.define(:version => 20120423061503) do
     t.datetime "created_at",                       :null => false
     t.datetime "updated_at",                       :null => false
     t.integer  "course_id"
-    t.boolean  "all_day"
     t.string   "notification_type"
+    t.boolean  "all_day"
     t.integer  "user_id"
   end
 
