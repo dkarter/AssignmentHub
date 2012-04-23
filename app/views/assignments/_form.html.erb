@@ -35,6 +35,12 @@
 				    <%= f.text_field :name, :class => 'field size1' %>
 				</p>
 
+                <p>
+                    <span class="req">(Required, specify the course)</span>
+                    <%= f.label :course_id %>
+                    <%= f.text_field :course_id %>
+                </p>
+
 				<p>
 					<%= f.label :assignment_type %>
 				    <%= f.text_field :assignment_type %>

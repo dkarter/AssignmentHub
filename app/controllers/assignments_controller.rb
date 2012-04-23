@@ -49,6 +49,7 @@ class AssignmentsController < ApplicationController
   # POST /assignments.json
   def create
     @assignment = Assignment.new(params[:assignment])
+    @assignment.course = Course.find(@assignment.course_id)
 
     respond_to do |format|
       if @assignment.save
