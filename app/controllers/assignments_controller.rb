@@ -17,7 +17,7 @@ class AssignmentsController < ApplicationController
 
     respond_to do |format|
       format.html # show.html.erb
-      format.json { render json: @assignment }
+      format.json { render json: @assignment.to_json }
     end
   end
 
@@ -51,7 +51,6 @@ class AssignmentsController < ApplicationController
     @assignment = Assignment.new(params[:assignment])
     @assignment.notification_type = params[:notification_type].to_s
     @assignment.course = Course.find(@assignment.course_id)
-
     respond_to do |format|
       if @assignment.save
         format.html { redirect_to @assignment, notice: 'Assignment was successfully created.' }

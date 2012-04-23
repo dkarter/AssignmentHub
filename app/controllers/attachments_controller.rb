@@ -41,7 +41,10 @@ class AttachmentsController < ApplicationController
   # POST /attachments.json
   def create
     @attachment = Attachment.new(params[:attachment])
-
+    
+    # set current user as the creator of the attachment 
+    @attachment.user = User.find(current_user)
+    
     respond_to do |format|
       if @attachment.save
         format.html { redirect_to @attachment, notice: 'Attachment was successfully created.' }

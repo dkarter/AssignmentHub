@@ -3,6 +3,9 @@ class Assignment < ActiveRecord::Base
 
   before_create :schedule_notification
   
+  scope :before, lambda {|end_time| {:conditions => ["due_date < ?", Event.format_date(end_time)] }}
+  scope :after, lambda {|start_time| {:conditions => ["start_date > ?", Event.format_date(start_time)] }}
+  
   validates_presence_of :name, :message => "must provide basic information"
   validates_length_of :name, :maximum => 15, :message => "less than 15 characters please"
 
@@ -30,5 +33,28 @@ class Assignment < ActiveRecord::Base
       #Do nothing - the user chose not to be reminded or an unrecognized type was found
     end
   end
+
+  # need to override the json view to return what full_calendar is expecting.
+  # http://arshaw.com/fullcalendar/docs/event_data/Event_Object/
+  def as_json(options = {})
+    {
+      :id => self.id,
+      :title => self.name,
+      :description => self.notes || "",
+      :start => self.start_date,
+      :end => self.due_date,
+      :allDay => self.all_day,
+      :recurring => false,
+      :url => Rails.application.routes.url_helpers.assignment_path(id)
+    }
+    
+  end
+  
+  ASSIGNMENTTYPE = [['Midterm Exam', '0'],
+                    ['Final Exam', '1'],
+                    ['Paper', '2'],
+                    ['Project Deliverable', '3'],
+                    ['Final Project', '4'],
+                    ['Lab','5']]
 
 end

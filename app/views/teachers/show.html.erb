@@ -1,6 +1,9 @@
 <p id="notice"><%= notice %></p>
-
-<%= image_tag @teacher.photo.url(:large) %>
+<ul class="polaroids">
+	<li>
+		<a href="#"><%= image_tag @teacher.photo.url(:large) %></a>
+	</li>
+</ul>
 
 <p>
   <b>Name:</b>

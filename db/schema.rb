@@ -24,6 +24,7 @@ ActiveRecord::Schema.define(:version => 20120423042510) do
     t.datetime "updated_at",                       :null => false
     t.integer  "course_id"
     t.string   "notification_type"
+    t.boolean  "all_day"
   end
 
   create_table "attachments", :force => true do |t|

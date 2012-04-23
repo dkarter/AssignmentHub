@@ -15,6 +15,9 @@
 //= require jquery-ui-timepicker-addon
 //= require jquery_ujs
 //= require autocomplete-rails
+//= require jquery.rest
+//= require fullcalendar
+//= require gcal
 
 
 //for color picker - TODO: Convert to jQuery
@@ -32,6 +35,48 @@ $(document).ready(function() {
 	 $('input[name*="date"]').datetimepicker({
          ampm: true
       });
+
+	$('#dashboard-calendar').fullCalendar({
+
+		editable: true,
+		header: {
+					left: 'prev,next today',
+					center: 'title',
+					right: 'month,agendaWeek,agendaDay'
+		},
+		selectable: true,
+		selectHelper: true,
+		
+		events: "/assignments?format=json",
+
+		eventDrop: function(event, delta) {
+			alert(event.title + ' was moved ' + delta + ' days\n' +
+				'(should probably update your database)');
+		},
+
+		loading: function(bool) {
+			if (bool) $('#loading').show();
+			else $('#loading').hide();
+		},
+
+		select: function(start, end, allDay) {
+			var title = prompt('Event Title:');
+			if (title) {
+				calendar.fullCalendar('renderEvent',
+					{
+						title: title,
+						start: start,
+						end: end,
+						allDay: allDay
+					},
+					true // make the event "stick"
+				);
+			}
+			calendar.fullCalendar('unselect');
+		}
+		
+
+	});
 	
 });
 
@@ -45,3 +90,4 @@ function add_fields(link, association, content) {
   var regexp = new RegExp("new_" + association, "g");
   $(link).parent().before(content.replace(regexp, new_id));
 }
+

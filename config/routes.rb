@@ -7,6 +7,7 @@ AssignmentHub::Application.routes.draw do
   get "forgot_password" => "password_resets#new", :as => "forgot_password"
   get "reminder" => "reminders#new", :as => "remind_me"
   get "course_search" => "courses#search", :as => "course_search"
+  get "dashboard" => "dashboard#index", :as => "dashboard"
   root :to => "courses#index", :as => "home"
 
   resources :teachers
