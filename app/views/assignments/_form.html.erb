@@ -35,10 +35,9 @@
 				    <%= f.text_field :name, :class => 'field size1' %>
 				</p>
 
-                <p>
-                    <span class="req">(Required, specify the course)</span>
+                <p id="course-field">
                     <%= f.label :course_id %>
-                    <%= f.text_field :course_id %>
+                    <%= f.select(:course_id, @courses.map {|c| [ c.course_number + " - " + c.name, c.id ] }) %>
                 </p>
 
 				<p>

@@ -1,17 +1,22 @@
-$('.box-head').html('<h2>Course Updated</h2>');
+<% if @course.errors.any? %>
+      alert('<%= pluralize(@course.errors.count, "error") %> prohibited this course from being saved:\n'
 
-$('.form p').hide();
-$('.colorpicker').hide();
+  
+      <% @course.errors.full_messages.each do |msg| %>
+			+ '* <%= msg %> \n'
+      <% end %>
+ 	);
+<% else %>
+	$('.box-head').html('<h2>Course Updated</h2>');
 
+	$('.form p').hide();
+	$('.colorpicker').hide();
+	
+	$('#ajax-response').html('<h1>Course updated successfully!</h1><br />');
+	$('#ajax-response').toggle('slow');
 
-$('#ajax-response').html('<h1>Course updated successfully!</h1><br />');
-$('#ajax-response').toggle('slow');
-
-
-
-$('.buttons').html('<a href="/courses" class="button">Done</a>');
-
-
+	$('.buttons').html('<a href="/courses" class="button">Done</a>');
+<% end %>
 
 ///***********************************************************************////
 // for reference - this is how you can capture the response maybe useful in 

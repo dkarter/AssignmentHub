@@ -5,7 +5,7 @@ class Course < ActiveRecord::Base
   has_many :attachments
   
   validates_presence_of :name, :message => "must provide basic information"
-  validates_length_of :name, :maximum => 15, :message => "less than 15 characters please"
+  validates_length_of :name, :maximum => 100, :message => "less than 100 characters please"
   
   #allows adding teachers (and TAs) from the course editing page, doesn't save blank names
   accepts_nested_attributes_for :teachers, 

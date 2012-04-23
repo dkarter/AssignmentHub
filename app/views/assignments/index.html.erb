@@ -23,6 +23,7 @@
 					<th width="13"><input type="checkbox" class="checkbox" /></th>
 				    <th>Name</th>
 				    <th>Type</th>
+					<th>Course</th>
 				    <th>Start Date</th>
 				    <th>Due Date</th>
 				    <th>Priority</th>
@@ -39,6 +40,7 @@
 					<td><input type="checkbox" class="checkbox" /></td>
 				    <td><%= link_to assignment.name, assignment %></td>
 				    <td><%= assignment.assignment_type %></td>
+					<td><%= assignment.course.course_number if assignment.course %></td>
 				    <td><%= assignment.start_date ? assignment.start_date.strftime("%m/%d/%Y %I:%M%p") : '--' %></td>
 				    <td><%= assignment.due_date ? assignment.due_date.strftime("%m/%d/%Y %I:%M%p") : '--' %></td>
 				    <td><%= assignment.priority %></td>

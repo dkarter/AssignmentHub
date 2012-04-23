@@ -1,6 +1,6 @@
 <!-- Content -->
 <div id="content">
-	<%= form_for(@course, :builder => ApplicationHelper::ColorPickerFormBuilder) do |f| %>
+	<%= form_for(@course, :remote => true, :builder => ApplicationHelper::ColorPickerFormBuilder) do |f| %>
 	  <% if @course.errors.any? %>
 	    <div id="error_explanation">
 	      <h2><%= pluralize(@course.errors.count, "error") %> prohibited this course from being saved:</h2>

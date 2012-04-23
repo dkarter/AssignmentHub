@@ -3,7 +3,7 @@ class AssignmentsController < ApplicationController
   # GET /assignments.json
   def index
     @assignments = Assignment.all
-
+    
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @assignments }
@@ -25,7 +25,9 @@ class AssignmentsController < ApplicationController
   # GET /assignments/new.json
   def new
     @assignment = Assignment.new
-
+    @assignment.user = User.find(current_user)
+    @courses = Course.where(:user_id => @assignment.user)
+    
     respond_to do |format|
       format.html # new.html.erb
       format.json { render json: @assignment }
@@ -43,6 +45,8 @@ class AssignmentsController < ApplicationController
   # GET /assignments/1/edit
   def edit
     @assignment = Assignment.find(params[:id])
+    @assignment.user = User.find(current_user) if !@assignment.user
+    @courses = Course.where(:user_id => @assignment.user)
   end
 
   # POST /assignments
@@ -50,7 +54,7 @@ class AssignmentsController < ApplicationController
   def create
     @assignment = Assignment.new(params[:assignment])
     @assignment.notification_type = params[:notification_type].to_s
-    @assignment.course = Course.find(@assignment.course_id)
+
     respond_to do |format|
       if @assignment.save
         format.html { redirect_to @assignment, notice: 'Assignment was successfully created.' }

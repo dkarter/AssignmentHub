@@ -36,6 +36,17 @@ $(document).ready(function() {
          ampm: true
       });
 
+	// all day schedule disables time pickers
+	$('#assignment_all_day').click(function() {
+		checked = $(this).is(':checked');
+		field_disabled('#assignment_start_date_4i', checked);
+		field_disabled('#assignment_start_date_5i', checked);
+
+		field_disabled('#assignment_due_date_4i', checked);
+		field_disabled('#assignment_due_date_5i', checked);
+	});
+
+	// Full Calendar Implementation
 	$('#dashboard-calendar').fullCalendar({
 
 		editable: true,
@@ -91,3 +102,6 @@ function add_fields(link, association, content) {
   $(link).parent().before(content.replace(regexp, new_id));
 }
 
+function field_disabled (field, disabled) {
+	$(field).prop('disabled', disabled);
+}

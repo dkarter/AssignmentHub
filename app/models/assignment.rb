@@ -1,6 +1,7 @@
 class Assignment < ActiveRecord::Base
   belongs_to :course
-
+  belongs_to :user
+  
   before_create :schedule_notification
   
   scope :before, lambda {|end_time| {:conditions => ["due_date < ?", Event.format_date(end_time)] }}

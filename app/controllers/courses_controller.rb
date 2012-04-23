@@ -88,6 +88,7 @@ class CoursesController < ApplicationController
         format.json { head :no_content }
       else
         format.html { render action: "edit" }
+        format.js
         format.json { render json: @course.errors, status: :unprocessable_entity }
       end
     end
