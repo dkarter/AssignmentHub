@@ -57,7 +57,7 @@
 
                 <p>
                     <%= f.label :notification_type %>
-                    <%= select_tag(:notification_type, options_for_select([['No Email Reminders','NR'],['1 Hour Before','1H'],['24 Hours Before','24H'],['1 Week Before','1W']]))  %>
+                    <%= select(:notification_type, "Notification Type", {"No Reminders" => "NR", "1 Hour Before" => "1H", "24 Hours Before" => "24H", "1 Week Before" => "1W"}) %>
                 </p>
 			  
 				<p>

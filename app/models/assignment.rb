@@ -17,13 +17,13 @@ class Assignment < ActiveRecord::Base
     notify = self.notification_type
 
     #See what kind of notification type the user selected
-    if notify == '1W'
+    if notify == '{"Notification Type"=>"1W"}'
       remind_time = due - 1.week
       Notifications.delay(:run_at => remind_time).deliver_notification(email, owner, course_name, name, due)
-    elsif notify == '1H'
+    elsif notify == '{"Notification Type"=>"1H"}'
       remind_time = due - 1.hour
       Notifications.delay(:run_at => remind_time).deliver_notification(email, owner, course_name, name, due)
-    elsif notify == '24H'
+    elsif notify == '{"Notification Type"=>"24H"}'
       remind_time = due - 1.day
       Notifications.delay(:run_at => remind_time).deliver_notification(email, owner, course_name, name, due)
     else

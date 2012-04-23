@@ -49,6 +49,7 @@ class AssignmentsController < ApplicationController
   # POST /assignments.json
   def create
     @assignment = Assignment.new(params[:assignment])
+    @assignment.notification_type = params[:notification_type].to_s
     @assignment.course = Course.find(@assignment.course_id)
 
     respond_to do |format|
