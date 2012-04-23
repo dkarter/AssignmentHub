@@ -19,7 +19,7 @@ class Assignment < ActiveRecord::Base
     #course = "Test Course"
     #due = "tomorrow"
     #Notifications.deliver_notification(email, name, course, assignment, due)
-    Notifications.send_at(remind_time, :deliver_notification,"nephanim@gmail.com", "Nephanim", "Test Course", name, due)
+    Notifications.send_at(remind_time, :deliver_notification,"nephanim@gmail.com", "Nephanim", "Test Course", name, due).deliver
   end
 
 end
