@@ -50,7 +50,7 @@ class UserTest < ActiveSupport::TestCase
     assert User.authenticate('tester','password'), "Couldn't log in with original password"
     @user.encrypt_given_password('newpass')
     assert @user.save, "Couldn't save user with new password"
-    assert User.encrypt('newpass', @user.pass_salt) == @user.password, "Encryption check failed"
+    assert @user.check_password('newpass'), "Encryption check failed"
     assert !User.authenticate('tester','password'), "Authenticated with wrong password! (old)"
     assert User.authenticate('tester','newpass'), "Couldn't log in"
   end

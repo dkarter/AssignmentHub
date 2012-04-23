@@ -6,7 +6,6 @@ class User < ActiveRecord::Base
   # Validation of various parameters. Important: require valid email format, unique username
 
   before_create :encrypt_password
-  before_update :encrypt_password
 
   validates_length_of :name, :within => 3..15
   validates_length_of :password, :within => 5..40
@@ -21,7 +20,7 @@ class User < ActiveRecord::Base
 
   def self.authenticate(name, pass)
     user = find_by_name(name)
-    if user && User.encrypt(pass, user.pass_salt) == user.password
+    if User.encrypt(pass, user.pass_salt) == user.password
       user
     else
       nil
@@ -34,7 +33,7 @@ class User < ActiveRecord::Base
 
   def encrypt_password()
     self.pass_salt = User.random_string(10) if !self.pass_salt
-    self.password = self.password_confirmation = User.encrypt(self.password, self.pass_salt)
+    self.password = User.encrypt(self.password, self.pass_salt)
   end
 
   def encrypt_given_password(password)
@@ -52,7 +51,7 @@ class User < ActiveRecord::Base
       user.encrypt_given_password(new_pass)
       user.save
       Notifications.forgot_password(self.email, self.name, new_pass).deliver
-    end
+      end
   end
 
   protected
