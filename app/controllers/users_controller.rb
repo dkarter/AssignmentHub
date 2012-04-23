@@ -87,7 +87,7 @@ class UsersController < ApplicationController
   # PUT /users/1.json
   def update
     @user = User.find(params[:id])
-    @user.password = User.encrypt_given_password(password)
+    @user.password = User.encrypt_given_password(params[:password])
 
     respond_to do |format|
       if @user.update_attributes(params[:user])
