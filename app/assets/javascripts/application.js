@@ -39,7 +39,8 @@ $(document).ready(function() {
 	});
 
 	// force footer to bottom on dashboard
-	if(window.location.href.indexOf("dashboard") > -1) {
+	if(window.location.href.indexOf("dashboard") > -1 || 
+	window.location.href.indexOf("assignments/new")) {
 		$(window).scroll(function() {position_footer();});
 		$(window).resize(function() {position_footer();});
 	}
@@ -93,7 +94,17 @@ $(document).ready(function() {
 				);
 			}
 			calendar.fullCalendar('unselect');
-		}
+		},
+		
+		//http://arshaw.com/fullcalendar/docs/event_ui/eventDrop/
+        eventDrop: function(event, dayDelta, minuteDelta, allDay, revertFunc){
+            updateEvent(event);
+        },
+
+        // http://arshaw.com/fullcalendar/docs/event_ui/eventResize/
+        eventResize: function(event, dayDelta, minuteDelta, revertFunc){
+            updateEvent(event);
+        }
 		
 
 	});
@@ -131,3 +142,17 @@ function position_footer() {
 	}
 }
 
+function updateEvent(assignment) {
+   	alert(assignment.start);
+	alert(assignment.end);
+	$.update(
+     "/assignments/" + assignment.id,
+     { assignment: { name: assignment.title,
+                start_date: "" + assignment.start,
+                due_date: "" + assignment.end }
+     }, 
+		function (reponse) { 
+			//alert('successfully updated task.'); 
+		}
+    );
+}

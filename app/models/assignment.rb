@@ -8,7 +8,7 @@ class Assignment < ActiveRecord::Base
   scope :after, lambda {|start_time| {:conditions => ["start_date > ?", Event.format_date(start_time)] }}
   
   validates_presence_of :name, :message => "must provide basic information"
-  validates_length_of :name, :maximum => 15, :message => "less than 15 characters please"
+  validates_length_of :name, :maximum => 50, :message => "less than 50 characters please"
 
   def schedule_notification()
     @course = Course.find(self.course_id)

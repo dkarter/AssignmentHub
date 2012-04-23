@@ -54,7 +54,9 @@ class AssignmentsController < ApplicationController
   def create
     @assignment = Assignment.new(params[:assignment])
     @assignment.notification_type = params[:notification_type].to_s
-
+    @assignment.user = User.find(current_user)
+    @courses = Course.where(:user_id => @assignment.user)
+    
     respond_to do |format|
       if @assignment.save
         format.html { redirect_to @assignment, notice: 'Assignment was successfully created.' }
