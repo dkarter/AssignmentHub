@@ -3,6 +3,8 @@
  	<%= f.text_field :first, :class => 'subform_textfield' %>
     <%= f.label :last, :class => 'subform_label' %>
     <%= f.text_field :last, :class => 'subform_textfield' %>
+    <%= f.label :email, "Email", :class => 'subform_label' %>
+    <%= f.text_field :email, :class => 'subform_textfield' %></br>
 	<%= f.label :instructor_type, "Role", :class => 'subform_label' %>
 	<%= select_tag(:instructor_type, options_for_select([['Professor', 'PR'],['Teaching Assistant', 'TA'],['Adjunct Professor', 'AD']]))  %>
  	<%= link_to_remove_fields "remove", f %>

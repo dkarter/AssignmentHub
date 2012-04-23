@@ -26,9 +26,10 @@
 </p>
 
 <p>
+  <b>Teachers:</b>
 	<ol>
 		<% for teacher in @course.teachers %>
-			<li><%= teacher.name %></li>
+			<li><%= teacher.first + " " + teacher.last %></li>
 		<% end %>
 	</ol>
 </p>
