@@ -22,11 +22,18 @@ class AttachmentsController < ApplicationController
   # GET /attachments
   # GET /attachments.json
   def index
+    #for json view of attachments by assignment id /attachment_for/:assignment_id
     if params[:assignment_id]
       @attachments = Attachment.where(:assignment_id => params[:assignment_id], :user_id => User.find(current_user))
-    else
+    elsif current_user && User.find(current_user).user_type > 0
+      @attachments = Attachment.where(:user_id => User.find(current_user))
+    elsif current_user && User.find(current_user).user_type == 0
       @attachments = Attachment.all
+    else
+      @attachments = nil
+      redirect_to sign_up_path and return
     end
+    
     respond_to do |format|
       format.html # index.html.erb
       format.json { render :json => @attachments.collect { |a| a.to_jq_upload }.to_json }

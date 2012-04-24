@@ -46,7 +46,14 @@
 
 					<div>
 					  <h3>Type:</h3>
-					  <%= @assignment.assignment_type %>
+					  <%= Assignment::GetAssignmentTypeFromValue(@assignment.assignment_type) %>
+					</div>
+					
+					
+					<div>
+					  <h3>Course:</h3>
+					  <div class="course-color-index" style="background: #<%= @assignment.course.color %>"></div>
+					  <span class="course-name"><%= @assignment.course.name %></span>
 					</div>
 				</li>
 				<li>
@@ -66,6 +73,8 @@
 					</div>
 				</li>
 			</dl>
+			<br />
+			<br />
 			<div>
 			  <h3>Notes:</h3>
 				<!-- Making sure no injection + maintaining format -->

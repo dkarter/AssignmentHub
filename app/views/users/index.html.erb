@@ -54,14 +54,13 @@
 				<% @users.each do |user| %>
 				  <tr>
 					<td><input type="checkbox" class="checkbox" /></td>
-				    <td><%= user.name %></td>
+				    <td><%= link_to user.name, user %></td>
 				    <td><%= user.first + " " + user.last %></td>
 				    <td><%= user.email %></td>
 				    <td><%= user.phone %></td>
 				    <td><%= user.user_type == 0 ? 'Admin' : 'Normal' %></td>
-				    <td><%= link_to 'Show', user %></td>
-				    <td><%= link_to 'Edit', edit_user_path(user), :class => 'ico edit' %></td>
-				    <td><%= link_to 'Destroy', user, confirm: 'Are you sure?', method: :delete, :class => 'ico del' %></td>
+				    <td><%= link_to '', edit_user_path(user), :class => 'ico edit' %></td>
+				    <td><%= link_to '', user, confirm: 'Are you sure?', method: :delete, :class => 'ico del' %></td>
 				  </tr>
 				<% end if @users %>
 

@@ -22,7 +22,15 @@ class AssignmentsController < ApplicationController
   # GET /assignments
   # GET /assignments.json
   def index
-    @assignments = Assignment.all
+    if current_user && !is_admin
+      @assignments = Assignment.where(:user_id => User.find(current_user))
+    elsif is_admin
+      @assignments = Assignment.all
+    else
+      @assignments = nil
+      redirect_to sign_up_path and return
+    end
+    
     
     respond_to do |format|
       format.html # index.html.erb
@@ -44,9 +52,15 @@ class AssignmentsController < ApplicationController
   # GET /assignments/new
   # GET /assignments/new.json
   def new
+    #assignments/new_for_course/:course_id
     @assignment = Assignment.new
     @assignment.user = User.find(current_user)
-    @courses = Course.where(:user_id => @assignment.user)
+    
+    if params[:course_id]
+      @assignment.course_id = Course.where(:id => params[:course_id], :user_id => @assignment.user.id).first.id
+    else
+      @courses = Course.where(:user_id => @assignment.user)
+    end
     
     respond_to do |format|
       format.html # new.html.erb

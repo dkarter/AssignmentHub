@@ -111,6 +111,7 @@
 		<!-- End Box Head-->
 		
 		<div class="box-content">
+			<%= link_to 'Add New Assignment', '/assignments/new_for_course/' + @course.id.to_s, :class => 'btn' %><br /><br />
 			<%= link_to 'Add New Course', new_course_path, :class => 'btn' %> <br /><br />
 			<%= link_to 'Delete Course', @course, confirm: 'Are you sure?', method: :delete, :class => 'btn btn-danger' %>
 			<div class="cl">&nbsp;</div>

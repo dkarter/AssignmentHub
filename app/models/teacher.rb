@@ -20,6 +20,7 @@
 
 class Teacher < ActiveRecord::Base
   has_and_belongs_to_many :courses
+  belongs_to :user
   
   validates_presence_of :first, :last
   validates_length_of :first, :last, :maximum => 15, :message => "less than 15 characters please"

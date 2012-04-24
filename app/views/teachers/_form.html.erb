@@ -66,10 +66,6 @@
 						  	<%= f.text_field :last %>
 						</p>
 						<p>
-						  	<%= f.label "Role" %>
-					    	<%= select_tag(:instructor_type, options_for_select([['Professor', 'PR'],['Teaching Assistant', 'TA'],['Adjunct Professor', 'AD']]))  %>
-						</p>
-						<p>
 						  	<span class="req">(Required, max 40 characters)</span>
 						  	<%= f.label "Email address" %>
 						  	<%= f.text_field :email %>

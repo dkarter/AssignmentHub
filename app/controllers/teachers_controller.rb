@@ -22,7 +22,15 @@ class TeachersController < ApplicationController
   # GET /teachers
   # GET /teachers.json
   def index
-    @teachers = Teacher.all
+    if current_user && User.find(current_user).user_type > 0
+      @teachers = Teacher.where(:user_id => User.find(current_user))
+    elsif current_user && User.find(current_user).user_type == 0
+      @teachers = Teacher.all
+    else
+      @teachers = nil
+      redirect_to sign_up_path and return
+    end
+    
 
     respond_to do |format|
       format.html # index.html.erb
@@ -45,7 +53,8 @@ class TeachersController < ApplicationController
   # GET /teachers/new.json
   def new
     @teacher = Teacher.new
-
+    @teacher.user = User.find(current_user)
+    
     respond_to do |format|
       format.html # new.html.erb
       format.json { render json: @teacher }
@@ -61,6 +70,7 @@ class TeachersController < ApplicationController
   # POST /teachers.json
   def create
     @teacher = Teacher.new(params[:teacher])
+    @teacher.user = User.find(current_user)
     
     respond_to do |format|
       if @teacher.save

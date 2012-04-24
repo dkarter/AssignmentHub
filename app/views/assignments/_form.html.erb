@@ -56,12 +56,16 @@
 					<%= f.label :name %>
 				    <%= f.text_field :name, :class => 'field size1' %>
 				</p>
-
-                <p id="course-field">
-                    <%= f.label :course_id %>
-                    <%= f.select(:course_id, @courses.map {|c| [ c.course_number + " - " + c.name, c.id ] }) %>
-                </p>
-
+				
+				<% if @courses %>
+	                <p id="course-field">
+	                    <%= f.label :course_id %>
+	                    <%= f.select(:course_id, @courses.map {|c| [ c.course_number + " - " + c.name, c.id ] }) %>
+	                </p>
+				<% else %>
+					<%= f.hidden_field :course_id, :value => @assignment.course_id %>
+				<% end %>
+				
 				<p>
 					<%= f.label :assignment_type %>
 				    <%= f.select :assignment_type, Assignment::ASSIGNMENTTYPE  %>

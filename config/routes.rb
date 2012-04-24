@@ -30,6 +30,7 @@ AssignmentHub::Application.routes.draw do
   get "dashboard" => "dashboard#index", :as => "dashboard"
 
   match 'attachments_for/:assignment_id' => 'Attachments#index'
+  match 'assignments/new_for_course/:course_id' => 'Assignments#new'
 
   root :to => "courses#index", :as => "home"
 
