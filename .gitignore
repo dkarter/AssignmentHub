@@ -26,3 +26,4 @@
 
 # never commit instructor photos to the source control !
 /AssignmentHub/public/system/teachers/photos
+/AssignmentHub/public/uploads

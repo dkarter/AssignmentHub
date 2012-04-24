@@ -78,5 +78,10 @@ class Assignment < ActiveRecord::Base
                     ['Project Deliverable', '3'],
                     ['Final Project', '4'],
                     ['Lab','5']]
+  
+  def self.GetAssignmentTypeFromValue(value)
+    temp = ASSIGNMENTTYPE.select{ |x| x[1] == value.to_s() }.first
+    return temp ? temp.first : ''
+  end
 
 end

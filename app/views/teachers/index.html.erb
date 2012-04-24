@@ -59,7 +59,7 @@
 				  <tr>
 					<td><input type="checkbox" class="checkbox" /></td>
 			    	<td><%= image_tag teacher.photo.url(:thumb), :class => "prof_thumb" %></td>
-					<td><%= link_to (Teacher::GetTitleFromValue(teacher.title) + " " + teacher.last + ", " + teacher.first), teacher %></td>
+					<td><%= link_to Teacher::GetInstructorFullName(@teacher), teacher %></td>
 				    <td><%= teacher.email %></td>
 				    <td><%= teacher.office_hours %></td>
 				    <td><%= teacher.phone %></td>
@@ -116,7 +116,7 @@
 		<!-- End Box Head-->
 		
 		<div class="box-content">
-			<%= link_to 'Add New Instructor', new_teacher_path, :class => 'silverCss3Button' %>
+			<%= link_to 'Add New Instructor', new_teacher_path, :class => 'btn' %>
 			<div class="cl">&nbsp;</div>
 			
 			<p class="select-all"><input type="checkbox" class="checkbox" /><label>select all</label></p>

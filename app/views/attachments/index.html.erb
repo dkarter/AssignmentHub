@@ -44,12 +44,13 @@
 				<tr>
 					<th width="13"><input type="checkbox" class="checkbox" /></th>
 				    <th>Name</th>
+				    <th>Filename</th>				
 				    <th>Type</th>
+					<th>Assignment</th>
 				    <th>Upload date</th>
 				    <% if is_admin %>
 						<th>User</th>
 					<% end %>
-				    <th></th>
 				    <th></th>
 				    <th></th>
 				  </tr>
@@ -57,16 +58,17 @@
 				<% @attachments.each do |attachment| %>
 				  <tr>
 					<td><input type="checkbox" class="checkbox" /></td>
-				    <td><%= attachment.name %></td>
+				    <td><%= link_to attachment.name, attachment %></td>
+					<td><%= File.basename(attachment.attached_file.to_s).ellipsisize(20,4) %></td>
 				    <td><%= attachment.type %></td>
-				    <td><%= attachment.upload_date %></td>
+					<td><%= attachment.assignment_id %></td>
+				    <td><%= attachment.updated_at.to_s('mm/dd/yyyy hh:mm') %></td>
 					<!--will show usernames to which attachments belong to for admin user -->
 					<% if is_admin %>
 						<td><%= attachment.user.name if attachment.user %></td>
 					<% end %>
-				    <td><%= link_to 'Show', attachment %></td>
-				    <td><%= link_to 'Edit', edit_attachment_path(attachment), :class => 'ico edit' %></td>
-				    <td><%= link_to 'Destroy', attachment, confirm: 'Are you sure?', method: :delete, :class => 'delete_from_index ico del', :remote => true %></td>
+				    <td><%= link_to '', edit_attachment_path(attachment), :class => 'ico edit' %></td>
+				    <td><%= link_to '', attachment, confirm: 'Are you sure?', method: :delete, :class => 'delete_from_index ico del', :remote => true %></td>
 				  </tr>
 				<% end if @attachments %>
 			</table>
@@ -114,7 +116,7 @@
 		<!-- End Box Head-->
 		
 		<div class="box-content">
-			<%= link_to 'Add New Attachment', new_attachment_path, :class => 'silverCss3Button' %>
+			<%= link_to 'Add New Attachment', new_attachment_path, :class => 'btn' %>
 			<div class="cl">&nbsp;</div>
 			
 			<p class="select-all"><input type="checkbox" class="checkbox" /><label>select all</label></p>

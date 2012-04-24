@@ -58,13 +58,14 @@
 				  </tr>
 
 				<% @assignments.each do |assignment| %>
+					<% date_format = assignment.all_day ? "%m/%d/%Y" : "%m/%d/%Y %I:%M%p" %>
 				  <tr>
 					<td><input type="checkbox" class="checkbox" /></td>
 				    <td><%= link_to assignment.name, assignment %></td>
-				    <td><%= assignment.assignment_type %></td>
+				    <td><%= Assignment::GetAssignmentTypeFromValue(assignment.assignment_type) %></td>
 					<td><%= assignment.course.course_number if assignment.course %></td>
-				    <td><%= assignment.start_date ? assignment.start_date.strftime("%m/%d/%Y %I:%M%p") : '--' %></td>
-				    <td><%= assignment.due_date ? assignment.due_date.strftime("%m/%d/%Y %I:%M%p") : '--' %></td>
+				    <td><%= assignment.start_date ? assignment.start_date.strftime(date_format) : '--' %></td>
+				    <td><%= assignment.due_date ? assignment.due_date.strftime(date_format) : '--' %></td>
 				    <td><%= assignment.priority %></td>
 				    <td><%= truncate(assignment.notes, :length => 10, :omission => "...") %></td>
 					<!--will show usernames to which assignments belong to for admin user -->
@@ -120,7 +121,7 @@
 		<!-- End Box Head-->
 		
 		<div class="box-content">
-			<%= link_to 'Add New Assignment', new_assignment_path, :class => 'silverCss3Button' %>
+			<%= link_to 'Add New Assignment', new_assignment_path, :class => 'btn' %>
 			<div class="cl">&nbsp;</div>
 			
 			<p class="select-all"><input type="checkbox" class="checkbox" /><label>select all</label></p>

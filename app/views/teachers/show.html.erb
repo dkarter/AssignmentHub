@@ -1,6 +1,6 @@
 <!--
 # * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
-#AssignmentHub - My School Organizer on the Cloud
+#TeacherHub - My School Organizer on the Cloud
 # * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
 #Copyright (C) 2012 Dorian Karter, Joseph Low, Amar Rana
 # * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
@@ -20,42 +20,114 @@
 # * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
 -->
 
-<p id="notice"><%= notice %></p>
-<ul class="polaroids">
-	<li>
-		<a href="#"><%= image_tag @teacher.photo.url(:large) %></a>
-	</li>
-</ul>
-
-<p>
-  <b>Name:</b>
-  <%= Teacher::GetTitleFromValue(@teacher.title) + " " + @teacher.last + ", " + @teacher.first %>
-</p>
-
-<p>
-  <b>Email:</b>
-  <%= mail_to @teacher.email, @teacher.email %>
-</p>
-
-<p>
-  <b>Office Hours:</b>
-  <%= @teacher.office_hours %>
-</p>
-
-<p>
-  <b>Phone:</b>
-  <%= @teacher.phone %>
-</p>
-
-<p>
-  <b>Courses:</b><br />
-	<dl>
-		<% for course in @teacher.courses %>
-			<li><%= course.course_number + " - " + course.name %></li>
-		<% end %>
-	</dl>
-</p>
+<!--
+# * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+#TeacherHub - My School Organizer on the Cloud
+# * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+#Copyright (C) 2012 Dorian Karter, Joseph Low, Amar Rana
+# * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+#Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated
+#documentation files (the "Software"), to deal in the Software without restriction, including without limitation
+#the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and
+#to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+#
+#The above copyright notice and this permission notice shall be included in all copies or substantial portions
+#of the Software.
+#
+#THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED
+#TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
+#THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF
+#CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
+#DEALINGS IN THE SOFTWARE.
+# * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+-->
 
 
-<%= link_to 'Edit', edit_teacher_path(@teacher) %> |
-<%= link_to 'Back', teachers_path %>
+<!-- Content -->
+<div id="content">
+	
+	<!-- Box -->
+	<div class="box">
+		<!-- Box Head -->
+		<div class="box-head">
+			<h2>Instructor: <%= Teacher::GetInstructorFullName(@teacher) %></h2>
+		</div>
+		<!-- End Box Head -->
+	
+	
+	<div id="show-page-content" >
+			
+			<ul class="polaroids">
+				<li>
+					<a href="#"><%= image_tag @teacher.photo.url(:large) %></a>
+				</li>
+			</ul>
+			<dl class="two-col">
+				<li>
+					<div>
+					  <h3>Name:</h3>
+					  <%= Teacher::GetInstructorFullName(@teacher) %>
+					</div>
+
+					<div>
+					  <h3>Email:</h3>
+					  <%= mail_to @teacher.email, @teacher.email %>
+					</div>
+				</li>
+				<li>
+					<div>
+					  <h3>Office Hours:</h3>
+			  		  <%= @teacher.office_hours %>
+					</div>
+
+					<div>
+					  <h3>Phone</h3>
+			  		  <%= @teacher.phone %>
+					</div>
+
+				</li>
+			</dl>
+			<div>
+			  <b>Courses:</b><br />
+				<dl>
+					<% for course in @teacher.courses %>
+						<li><%= course.course_number + " - " + course.name %></li>
+					<% end %>
+				</dl>
+			</div>
+		</div>
+			<!-- Form Buttons -->
+			<div class="buttons">
+				<%= link_to 'Edit', edit_teacher_path(@teacher), :class => 'button' %>
+				<%= link_to 'Back', teachers_path(), :class => 'button' %>
+			</div>
+			<!-- End Form Buttons -->
+	</div>
+	<!-- End Box -->
+
+</div>
+<!-- End Content -->
+
+<!-- Sidebar -->
+<div id="sidebar">
+	
+	<!-- Box -->
+	<div class="box">
+		
+		<!-- Box Head -->
+		<div class="box-head">
+			<h2>Management</h2>
+		</div>
+		<!-- End Box Head-->
+		
+		<div class="box-content">
+			<%= link_to 'Add New Instructor', new_teacher_path, :class => 'btn' %>
+			<div class="cl">&nbsp;</div>
+			
+			
+			
+		</div>
+	</div>
+	<!-- End Box -->
+</div>
+<!-- End Sidebar -->

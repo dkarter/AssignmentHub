@@ -15,15 +15,10 @@
 //= require jquery-ui-timepicker-addon
 //= require jquery_ujs
 //= require autocomplete-rails
-//= require jquery.rest
 //= require fullcalendar
 //= require gcal
 
 
-//for color picker - TODO: Convert to jQuery
-//create unobtrosive bind to handle color pick automatically determining color
-
-//also using https://github.com/trentrichardson/jQuery-Timepicker-Addon
 var footerHeight = 0,
     footerTop = 0;
 

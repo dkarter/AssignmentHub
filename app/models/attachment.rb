@@ -19,7 +19,26 @@
 # * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
 
 class Attachment < ActiveRecord::Base
+  include Rails.application.routes.url_helpers
+    mount_uploader :attached_file, AttachedFileUploader
+
+  #entity relationships
   belongs_to :assignment
   belongs_to :course
   belongs_to :user
+  
+  #validators
+  #validates_presence_of :attached_file     
+             
+  #jquery helpers       
+  def to_jq_upload
+      {
+        "attachment_name" => name,
+        "name" => read_attribute(:attached_file),
+        "size" => attached_file.size,
+        "url" => attached_file.url,
+        "delete_url" => attachment_path(:id => id),
+        "delete_type" => "DELETE" 
+      }
+  end
 end

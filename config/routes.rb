@@ -28,6 +28,9 @@ AssignmentHub::Application.routes.draw do
   get "reminder" => "reminders#new", :as => "remind_me"
   get "course_search" => "courses#search", :as => "course_search"
   get "dashboard" => "dashboard#index", :as => "dashboard"
+
+  match 'attachments_for/:assignment_id' => 'Attachments#index'
+
   root :to => "courses#index", :as => "home"
 
   resources :teachers

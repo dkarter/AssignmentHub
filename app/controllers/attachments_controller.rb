@@ -22,11 +22,15 @@ class AttachmentsController < ApplicationController
   # GET /attachments
   # GET /attachments.json
   def index
-    @attachments = Attachment.all
-
+    if params[:assignment_id]
+      @attachments = Attachment.where(:assignment_id => params[:assignment_id], :user_id => User.find(current_user))
+    else
+      @attachments = Attachment.all
+    end
     respond_to do |format|
       format.html # index.html.erb
-      format.json { render json: @attachments }
+      format.json { render :json => @attachments.collect { |a| a.to_jq_upload }.to_json }
+      
     end
   end
 
@@ -45,7 +49,9 @@ class AttachmentsController < ApplicationController
   # GET /attachments/new.json
   def new
     @attachment = Attachment.new
-
+    @courses = Course.where(:user_id => current_user)
+    @assignments = Assignment.where(:user_id => current_user)
+    
     respond_to do |format|
       format.html # new.html.erb
       format.json { render json: @attachment }
@@ -55,6 +61,8 @@ class AttachmentsController < ApplicationController
   # GET /attachments/1/edit
   def edit
     @attachment = Attachment.find(params[:id])
+    @courses = Course.where(:user_id => @attachment.user)
+    @assignments = Assignment.where(:user_id => current_user)
   end
 
   # POST /attachments
@@ -65,13 +73,22 @@ class AttachmentsController < ApplicationController
     # set current user as the creator of the attachment 
     @attachment.user = User.find(current_user)
     
+    #from jquery upload
+    @attachment.name = params[:title] if params[:title]
+    
+    
+    if params[:assignment_id]
+      @attachment.assignment = Assignment.find(params[:assignment_id])
+      @attachment.course = @attachment.assignment.course
+    end
+    
     respond_to do |format|
       if @attachment.save
         format.html { redirect_to @attachment, notice: 'Attachment was successfully created.' }
-        format.json { render json: @attachment, status: :created, location: @attachment }
+        format.json { render :json => [@attachment.to_jq_upload].to_json }
       else
         format.html { render action: "new" }
-        format.json { render json: @attachment.errors, status: :unprocessable_entity }
+        format.json { render :json => [{:error => "custom_failure"}], :status => 304 }
       end
     end
   end
@@ -96,12 +113,13 @@ class AttachmentsController < ApplicationController
   # DELETE /attachments/1.json
   def destroy
     @attachment = Attachment.find(params[:id])
+    #TODO: delete file from disk (folder too)
     @attachment.destroy
 
     respond_to do |format|
       format.html { redirect_to attachments_url }
       format.js   { render :nothing => true }
-      format.json { head :no_content }
+      format.json { render :json => true }
     end
   end
 end

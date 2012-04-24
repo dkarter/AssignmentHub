@@ -20,41 +20,105 @@
 # * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
 -->
 
-<p id="notice"><%= notice %></p>
 
-<p>
-  <b>Name:</b>
-  <%= @course.name %>
-</p>
+<!-- Content -->
+<div id="content">
+	
+	<!-- Box -->
+	<div class="box">
+		<!-- Box Head -->
+		<div class="box-head">
+			<h2>Course: <%= @course.name %></h2>
+		</div>
+		<!-- End Box Head -->
+	
+	
+	<div id="show-page-content" >
+			
+			<dl class="two-col">
+				<li>
+					<div>
+					  <h3>Name:</h3>
+					  <div class="course-color-index" style="background: #<%= @course.color %>"></div>
+					  <span class="course-name"><%= @course.name %></span>
+					</div>
 
-<p>
-  <b>Course number:</b>
-  <%= @course.course_number %>
-</p>
+					<div>
+					  <h3>Course Number:</h3>
+					  <%= @course.course_number %>
+					</div>
+					<div>
+					  <h3>Section:</h3>
+					  <%= @course.section %>
+					</div>
+					
+				</li>
+				<li>
+					<div>
+					  <h3>School:</h3>
+			  		  <%= @course.school %>
+					</div>
 
-<p>
-  <b>School:</b>
-  <%= @course.school %>
-</p>
+					<div>
+					  <h3>Published?</h3>
+					  <%= @course.published ? 'Yes' : 'No' %>
+					</div>
 
-<p>
-  <b>Section:</b>
-  <%= @course.section %>
-</p>
+					<% if @course.published %>
+					<div>
+					  <h3>Code</h3>
+					  <%= @course.code %>
+					</div>
+					<% end %>
+					
 
-<p>
-  <b>Code:</b>
-  <%= @course.code %>
-</p>
+				</li>
+			</dl>
+			<br />
+			
+			<div>
+			  <h3>Instructors:</h3>
 
-<p>
-  <b>Teachers:</b>
-	<ol>
-		<% for teacher in @course.teachers %>
-			<li><%= teacher.first + " " + teacher.last %></li>
-		<% end %>
-	</ol>
-</p>
+					<ol id="instr-list">
+						<% for t in @course.teachers %>
+							<li><%= Teacher::GetInstructorFullName(t) %></li>
+						<% end %>
+					</ol>
+			</div>
+		</div>
+			<!-- Form Buttons -->
+			<div class="buttons">
+				<%= link_to 'Edit', edit_course_path(@course), :class => 'button' %>
+				<%= link_to 'Back', courses_path(), :class => 'button' %>
+			</div>
+			<!-- End Form Buttons -->
+	</div>
+	<!-- End Box -->
 
-<%= link_to 'Edit', edit_course_path(@course) %> |
-<%= link_to 'Back', courses_path %>
+</div>
+<!-- End Content -->
+
+<!-- Sidebar -->
+<div id="sidebar">
+	
+	<!-- Box -->
+	<div class="box">
+		
+		<!-- Box Head -->
+		<div class="box-head">
+			<h2>Management</h2>
+		</div>
+		<!-- End Box Head-->
+		
+		<div class="box-content">
+			<%= link_to 'Add New Course', new_course_path, :class => 'btn' %> <br /><br />
+			<%= link_to 'Delete Course', @course, confirm: 'Are you sure?', method: :delete, :class => 'btn btn-danger' %>
+			<div class="cl">&nbsp;</div>
+			
+			
+			
+		</div>
+	</div>
+	<!-- End Box -->
+</div>
+<!-- End Sidebar -->

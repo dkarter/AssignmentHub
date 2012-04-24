@@ -52,4 +52,9 @@ class Teacher < ActiveRecord::Base
     temp = TITLETYPE.select{ |x| x[1] == value.to_s() }.first
     return temp ? temp.first : ''
   end
+  
+  def self.GetInstructorFullName(instructor)
+    title_str = instructor.title ? GetTitleFromValue(instructor.title) + " " : ""
+    return title_str + instructor.last + ", " + instructor.first
+  end
 end
