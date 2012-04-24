@@ -26,7 +26,7 @@ class Teacher < ActiveRecord::Base
   validates_length_of :first, :last, :maximum => 15, :message => "less than 15 characters please"
   validates_length_of :email, :maximum => 40, :message => "less than 40 characters please"
   validates_length_of :office_hours, :maximum => 50, :message => "less than 50 characters please"
-  validates_format_of :email, :with => /^([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})$/i, :message => "Invalid email"
+  #validates_format_of :email, :with => /^([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})$/i, :message => "Invalid email"
   
   # i wouldn't do that.. what if two users create the same professor record?
   # we need to make the record belong to user

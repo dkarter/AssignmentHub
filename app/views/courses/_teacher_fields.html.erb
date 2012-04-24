@@ -21,13 +21,15 @@
 -->
 
 <p class="fields">
+	<!-- insecure - find a way to intercept this call and set user id on server side -->
+	<%= f.hidden_field :user_id, :value => User.find(current_user).id.to_s %>
 	<%= f.label :first, :class => 'subform_label' %>
  	<%= f.text_field :first, :class => 'subform_textfield' %>
     <%= f.label :last, :class => 'subform_label' %>
     <%= f.text_field :last, :class => 'subform_textfield' %>
-    <%= f.label :email, "Email", :class => 'subform_label' %>
-    <%= f.text_field :email, :class => 'subform_textfield' %></br>
 	<%= f.label :instructor_type, "Role", :class => 'subform_label' %>
-	<%= select_tag(:instructor_type, options_for_select([['Professor', 'PR'],['Teaching Assistant', 'TA'],['Adjunct Professor', 'AD']]))  %>
+	<%= select_tag(:instructor_type, 
+		options_for_select([['Professor', 'PR'],['Teaching Assistant', 'TA'],['Adjunct Professor', 'AD']]),
+		:class => 'subform_combo')  %>
  	<%= link_to_remove_fields "remove", f %>
 </p>

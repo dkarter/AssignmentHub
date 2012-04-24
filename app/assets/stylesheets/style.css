@@ -598,6 +598,9 @@ font-size: 11px !important;
 .subform_textfield {
 width: 150px !important;
 }
+.subform_combo {
+width: 100px !important;
+}
 
 
 /* Polaroids CSS 3 Effect */
