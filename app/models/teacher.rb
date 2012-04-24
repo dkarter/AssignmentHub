@@ -19,7 +19,8 @@
 # * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
 
 class Teacher < ActiveRecord::Base
-  has_and_belongs_to_many :courses
+  has_many :courses_teachers
+  has_many :courses, :through => :courses_teachers
   
   validates_presence_of :first, :last
   validates_length_of :first, :last, :maximum => 15, :message => "less than 15 characters please"
