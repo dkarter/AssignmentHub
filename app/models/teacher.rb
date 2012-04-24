@@ -19,8 +19,7 @@
 # * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
 
 class Teacher < ActiveRecord::Base
-  has_many :courses_teachers
-  has_many :courses, :through => :courses_teachers
+  has_and_belongs_to_many :courses
   
   validates_presence_of :first, :last
   validates_length_of :first, :last, :maximum => 15, :message => "less than 15 characters please"
@@ -55,6 +54,8 @@ class Teacher < ActiveRecord::Base
   end
   
   def self.GetInstructorFullName(instructor)
+    return "" if !instructor
+      
     title_str = instructor.title ? GetTitleFromValue(instructor.title) + " " : ""
     return title_str + instructor.last + ", " + instructor.first
   end
